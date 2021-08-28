@@ -1,0 +1,13 @@
+version: '3'
+services:
+    frontend:
+      image: angular7node10
+      volumes:
+        - './:/usr/src/app' 
+      ports: 
+        - '443:4200'
+      command:
+        bash -c "ng serve --host 0.0.0.0 --disable-host-check"
+      restart: always
+
+#bash -c "ng serve --ssl=true --host 0.0.0.0 --port=4200 --disable-host-check"

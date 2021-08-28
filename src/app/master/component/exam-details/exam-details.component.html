@@ -1,0 +1,110 @@
+<div class="container-fluid content">
+    <div class="content-top">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="top-header pd-t3">
+                    Quiz Details
+                    <ng-container *ngIf="questionResults[0]">
+                         for {{ questionResults[0]?.setId?.setName }}
+                    </ng-container>                    
+                </div>
+                <div class="top-body ds-9">
+                    <ol class="content-nav">
+                        <li class="content-nav-item">
+                            <a [routerLink]="['/']">
+                                {{ breadCumb.first }}
+                            </a>
+                        </li>    
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a [routerLink]="['/admin/dashboard']">
+                                {{ locale.label.breadCumb.second }}
+                            </a>    
+                        </li> 
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a>
+                                {{ locale.label.breadCumb.third }}
+                            </a>    
+                        </li>
+                    </ol>
+                </div> 
+            </div>
+            <div class="col-sm-6 text-right">
+               
+            </div>
+        </div>       
+    </div>
+
+    <div class="content-bottom" *ngIf="questionResults[0]">
+        <div class="bottom-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="accordion" id="accordionExample" >
+                        <div class="card" *ngFor="let questionResult of questionResults;let outerIdx = index;">
+                            <div class="card-header" id="heading{{ outerIdx }}">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+ outerIdx" [attr.aria-expanded]="true" [attr.aria-controls]="'collapseOne'">
+                                        Attempted on {{ questionResult.createdDate | date: 'dd-MM-yyyy' }}
+                                    </button>
+                                </h2>
+                            </div>
+                      
+                            <div id="collapse{{ outerIdx }}" [ngClass]="(outerIdx === 0) ? 'collapse show' : 'collapse'" [attr.aria-labelledby]="'heading'+ outerIdx" [attr.data-parent]="'#accordionExample'">
+                                <div class="card-body">
+                                    <div *ngFor="let questionAnswer of questionResult.questionAnswers; let idx = index;">
+                                        <div class="mg-b10 mg-t10 fs-18" style="font-weight: bold;">
+                                            Q{{ idx+1 }}. {{ questionAnswer.questionId.questionName }}
+                                        </div>
+                                        <div class="fs-16 mg-b10">
+                                            <b>Actual:</b>
+                                            {{ getQuestionAnswer(questionAnswer.answer) }}
+                                        </div>
+                                        <div class="fs-16 mg-b10">
+                                            <b>Expected:</b>
+                                            {{ getQuestionAnswer(questionAnswer.questionId.answer) }}
+                                        </div>
+                                        <div class="fs-16">
+                                            <span [ngClass]="questionAnswer.isCorrect ? 'badge badge-success': 'badge badge-danger'">
+                                                {{ questionAnswer.isCorrect ? 'Correct': 'Wrong' }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-footer" *ngIf="!questionResults[0]">
+        <div class="footer-panel">
+            <div class="row">
+                <div class="col-lg-12 no-record-found">
+                    <p class="mg-b10">
+                        <i aria-hidden="true" class="fa fa-sliders fs-32"></i>
+                    </p>
+                    <!-- <p class="mg-b10">
+                        {{ locale.label.list.noRecordFound }}
+                    </p> -->
+                    <p class="mg-b10">
+                        {{ locale.label.list.noRecordFoundSorry }}
+                    </p>                    
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <div class="footer">
+        <div class="row">
+            <div class="col-lg-7">
+                © 2021  {{ footer.copyRight }} 
+            </div>
+            <div class="col-lg-5">
+                 {{ footer.poweredBy }} 
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="loading-overlay ds-9">
+	<div class="lds-spinner">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>
+<div class="container-fluid full-height">
+    <div class="row justify-content-center full-height">
+        <div class="col-lg-8 col-md-6 col-sm-4 signin-bg">
+
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-8 signin"> 
+            <div class="server-scroll-top"></div>            
+            <div class="alert-message1">
+                <div class="alert-success pd-10" role="alert">            
+                </div>
+            </div>
+            <div class="alert-message1">
+                <div class="alert-danger pd-10" role="alert">            
+                </div>
+            </div>           
+            <div class="text-center">
+                <img class="image-fluid" style="width: 150px;height:50px;" src="./../../../../assets/img/logo1.png">
+            </div>
+            <div class="row text-center activate-content" *ngIf="isActivated">
+                <div class="col-12">
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-12">
+                    {{ locale.label.heading }}
+                </div>
+                <div class="col-12 shopping-btn">
+                    <a [routerLink]="['/signin']">
+                        {{ locale.label.signin }} 
+                    </a>
+                </div>
+            </div>
+            <div class="row text-center activate-content" *ngIf="isInvalidLink">
+                <div class="col-12 error">
+                    <i class="fa fa-bans" aria-hidden="true"></i>
+                </div>
+                <div class="col-12">
+                    {{ locale.label.invalidLink }}
+                </div>
+                <div class="col-12 shopping-btn">
+                    <a [routerLink]="['/signin']">
+                        {{ locale.label.signin }} 
+                    </a>
+                </div>
+            </div>
+        </div>                    
+    </div>
+</div>

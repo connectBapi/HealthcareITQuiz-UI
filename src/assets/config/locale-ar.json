@@ -1,0 +1,138 @@
+{
+    "language":{
+        "en": "الإنجليزية",
+        "ru": "عربى",
+        "code": {
+            "en": "إن",
+            "ar": "أر"
+        }
+    },
+    "signin": {
+        "label": {
+            "heading": "ابق على اتصال",
+            "subHeading": "أدخل عنوان بريدك الإلكتروني وكلمة المرور للوصول إلى حسابك.",
+            "termsCond": "بالنقر فوق تسجيل الدخول ، فإنك توافق على شروطنا وقد قرأت بيان الخصوصية العالمي الخاص بنا وأقرته",
+            "email": {
+                "label": "بريد إلكتروني",
+                "placeholder": "أدخل عنوان البريد الالكتروني"                
+            },
+            "password": {
+                "label": "كلمه السر",
+                "placeholder": "ادخل رقمك السري"                
+            },
+            "btnPrimary": "احصل على تسجيل الدخول",
+            "forgotPassword": "هل نسيت كلمة السر؟",
+            "createAccount": "إنشاء حساب"
+        },
+        "error": {
+            "email": {
+                "required": "هذه الخانة مطلوبه.",
+                "email": "يجب أن يكون البريد الإلكتروني عنوان بريد إلكتروني صالحًا."
+            },
+            "password": {
+                "required": "هذه الخانة مطلوبه."
+            },
+            "api": { 
+                "authorrization_header_missing": "أنت غير مخول لرؤية هذه الصفحة",
+                "email": {
+                    
+                },
+                "password": {
+                    
+                }
+            }
+        },
+        "success": {
+            "ui": {},
+            "api": {
+                "passwordChanged": "Password has been changed successfully."
+            }
+        } 
+    },
+    "admin": {
+        "navMenu": {
+            "dashboard": {
+                "label": "لوحة القيادة"
+            },
+            "employee": {
+                "label": "الموظف"
+            },
+            "product": {
+                "label": "Product"
+            },
+            "qustomer": {
+                "label": "منتج"
+            },
+            "quatation": {
+                "label": "اقتباس"
+            }
+        },
+        "breadComb": {
+            "first": "منزل، بيت",
+            "second": "لوحة القيادة"
+        },
+        "dashboard": {
+            "label": {
+            },
+            "error": {
+            },
+            "success": {
+                "ui": {},
+                "api": {}
+            } 
+        },
+        "changePassword": {
+            "label": {
+                "heading": "تغيير كلمة المرور",
+                "subHeading": "",
+                "password": {
+                    "label": "بريد إلكتروني",
+                    "placeholder": "إدخل كلمة السر الحالية"                
+                },
+                "newPassword": {
+                    "label": "كلمه السر",
+                    "placeholder": "أدخل كلمة المرور الجديدة"                
+                },
+                "confirmPassword": {
+                    "label": "تأكيد كلمة المرور",
+                    "placeholder": "أدخل تأكيد كلمة المرور الخاصة بك"                
+                },
+                "btnPrimary": "إرسال",
+                "btnSec": "إعادة ضبط"
+            },
+            "error": {
+                "password": {
+                    "required": "هذه الخانة مطلوبه."
+                },
+                "newPassword": {
+                    "required": "هذه الخانة مطلوبه.",
+                    "minLength": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.",
+                    "pattern": "يجب أن تحتوي كلمة المرور على حرف خاص واحد ورقم واحد."
+                },
+                "confirmPassword": {
+                    "required": "هذه الخانة مطلوبه.",
+                    "mustMatch": "يجب ان تتطابق كلمات المرور."
+                },
+                "api": { 
+                    "authorrization_header_missing": "You are unauthorised to see this page",
+                    "email": {
+                        
+                    },
+                    "password": {
+                        
+                    }
+                }
+            },
+            "success": {
+                "ui": {},
+                "api": {
+                    "passwordChanged": "Password has been changed successfully."
+                }
+            } 
+        }             
+    },
+    "footer": {
+        "copyRight": "Ctrlf Business CRM",
+        "poweredBy": "مدعوم من نظام CtrlF"
+    }
+}

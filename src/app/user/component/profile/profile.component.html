@@ -1,0 +1,151 @@
+<div class="container-fluid content">
+    <div class="content-top">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="top-header pd-t3">
+                    {{ locale.label.heading }}
+                </div>
+                <div class="top-body ds-9">
+                    <ol class="content-nav">
+                        <li class="content-nav-item">
+                            <a [routerLink]="['/']">
+                                {{ breadCumb.first }}
+                            </a>
+                        </li>    
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a [routerLink]="['/admin/dashboard']">
+                                {{ locale.label.breadCumb.second }}
+                            </a>    
+                        </li> 
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a>
+                                {{ locale.label.breadCumb.third }}
+                            </a>    
+                        </li>
+                    </ol>
+                </div> 
+            </div>
+            <div class="col-sm-6 text-right">
+                
+            </div>
+        </div>       
+    </div>
+
+    <div class="content-middle">
+        <div class="middle-header">
+            <div class="alert-message">
+                <div class="alert alert-success" role="alert">            
+                </div>
+            </div>
+            <div class="alert-message">
+                <div class="alert alert-danger" role="alert">            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-bottom">
+        <div class="bottom-body pd-10">
+            <form [formGroup]="profileFrm" class="profile-frm">
+                <div class="form-row">                
+                    <div class="form-group col">
+                        <label class="lbl">
+                            {{ locale.label.firstName.label }}
+                        </label>
+                        
+                        <input type="text" class="inpt firstName" placeholder="{{ locale.label.firstName.placeholder }}" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                        
+                        <div *ngIf="submitted && f.firstName.errors" class="error">
+                            <div *ngIf="f.firstName.errors.required">
+                                {{ locale.error.firstName.required }}
+                            </div>
+                        </div>
+    
+                        <div class="server-error error"></div>
+                    </div> 
+
+                    <div class="form-group col">
+                        <label class="lbl">
+                            {{ locale.label.lastName.label }}
+                        </label>
+                        
+                        
+                        <input type="text" class="inpt lastName" placeholder="{{ locale.label.lastName.placeholder }}" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                        
+                        <div *ngIf="submitted && f.lastName.errors" class="error">
+                            <div *ngIf="f.lastName.errors.required">
+                                {{ locale.error.lastName.required }}
+                            </div>
+                        </div>
+
+                        <div class="server-error error"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label class="lbl">
+                            {{ locale.label.email.label }}
+                        </label>
+                        
+                        
+                        <input type="text" class="inpt email" placeholder="{{ locale.label.email.placeholder }}" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+
+                        <div *ngIf="submitted && f.email.errors" class="error">
+                            <div *ngIf="f.email.errors.required">
+                                {{ locale.error.email.required }}
+                            </div>
+                            <div *ngIf="f.email.errors.email">
+                                {{ locale.error.email.invalid }}
+                            </div>
+                        </div>
+
+                        <div class="server-error error"></div>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label class="lbl">
+                            {{ locale.label.mobile.label }}
+                        </label>
+                        
+                        
+                        <input type="text" class="inpt mobile" placeholder="{{ locale.label.mobile.placeholder }}" formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
+                        
+                        <div *ngIf="submitted && f.mobile.errors" class="error">
+                            <div *ngIf="f.mobile.errors.patteren">
+                                {{ locale.error.mobile.invalid }}
+                            </div>
+                        </div>
+
+                        <div class="server-error error"></div>
+                    </div>
+                </div>                    
+
+                <button class="btn primary mg-r10" (click)="saveProfile()">
+                    {{ locale.label.btnPrimary }}
+                </button>
+
+                <button class="btn secondary" (click)="resetFrm()">
+                    {{ locale.label.btnSec }}
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="row">
+            <div class="col-lg-7">
+                © 2021  {{ footer.copyRight }}
+            </div>
+            <div class="col-lg-5">
+                {{ footer.poweredBy }}
+            </div>
+        </div>
+    </div>
+</div>

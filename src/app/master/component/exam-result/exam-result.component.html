@@ -1,0 +1,122 @@
+<div class="container-fluid content">
+    <div class="content-top">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="top-header pd-t3">
+                    {{ locale.label.heading }}
+                </div>
+                <div class="top-body ds-9">
+                    <ol class="content-nav">
+                        <li class="content-nav-item">
+                            <a [routerLink]="['/']">
+                                {{ breadCumb.first }}
+                            </a>
+                        </li>    
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a [routerLink]="['/admin/dashboard']">
+                                {{ locale.label.breadCumb.second }}
+                            </a>    
+                        </li> 
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a>
+                                {{ locale.label.breadCumb.third }}
+                            </a>    
+                        </li>
+                    </ol>
+                </div> 
+            </div>
+            <div class="col-sm-6 text-right">
+               
+            </div>
+        </div>       
+    </div>
+
+    <div class="content-bottom">
+        <div class="bottom-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="commence-exam-question ds-9" *ngIf="questionResults">
+                        <ng-container *ngFor="let questionResult of questionResults?.questionAnswers;let idx = index;">
+                            <div class="exam-result-row">
+                                <div class="mg-b10 mg-t25 fs-20">
+                                    Q.{{ idx+1 }} {{ questionResult.questionId.questionName }}
+                                </div>
+                                
+                                <ng-container *ngIf="questionResult.questionId.inputType === 1">
+                                    <input type="text" name="q{{ idx }}" class="inpt" id="{{ questionResult.questionId._id}}" value="{{ questionResult.answer[0] }}"  disabled="disabled">
+                                </ng-container>
+                                <ng-container *ngIf="questionResult.questionId.inputType === 2">
+                                    <textarea type="text" name="q{{ idx }}" class="inpt" id="{{ questionResult.questionId._id}}" disabled="disabled">{{ questionResult.answer[0] }}</textarea>
+                                </ng-container>
+                                <ng-container *ngIf="questionResult.questionId.inputType === 3">
+                                    <select  name="q{{ idx }}" class="inpt" id="{{ questionResult.questionId._id}}" value="{{ questionResult.answer[0] }}"  disabled="disabled">
+                                        <option value="">{{ locale.label.select }}</option>
+                                        <option *ngFor="let option of questionResult.questionId.options" value="option" value="{{ option }}">
+                                            {{ option }}
+                                        </option>
+                                    </select>
+                                </ng-container>
+                                <ng-container *ngIf="questionResult.questionId.inputType === 4">
+                                    <div class="chbxs" *ngFor="let option of questionResult.questionId.options;let innerIdx = index;" >
+                                        <input type="radio" name="rad{{ idx }}" id="checkbox{{ idx }}{{ innerIdx }}" class="regular-radio chkrad" value="{{ option }}" [checked]="getCheckedChbx(questionResult.answer, option)"  disabled="disabled">
+                                
+                                        <label class="box-chkbx-label" for="checkbox{{ idx }}{{ innerIdx }}"></label> {{ option }}
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf="questionResult.questionId.inputType === 5">
+                                    <div class="chbxs" *ngFor="let option of questionResult.questionId.options;let innerIdx = index;" >
+                                        <input type="checkbox"  id="checkbox{{ idx }}{{ innerIdx }}" class="regular-checkbox chkchbx" value="{{ option }}" [checked]="getCheckedChbx(questionResult.answer, option)" disabled="disabled">
+                                
+                                        <label class="box-chkbx-label" for="checkbox{{ idx }}{{ innerIdx }}"></label> {{ option }}
+                                    </div>
+                                </ng-container>
+                                
+                                <div class="mg-t5">
+                                    <span class="badge badge-pill mg-r10 " [ngClass]=" questionResult.isAttempted ? 'badge-primary': 'badge-secondary'">{{ questionResult.isAttempted ? locale.label.attempted : locale.label.unattempted }}</span>
+
+                                    <span class="badge badge-pill mg-r10 " [ngClass]=" questionResult.isAnswered ? 'badge-info': 'badge-dark'">{{ questionResult.isAnswered ? locale.label.answered : locale.label.unAnswered }}</span>
+
+                                    <span class="badge badge-pill mg-r10 " [ngClass]=" questionResult.isCorrect ? 'badge-success': 'badge-danger'">{{ questionResult.isCorrect ? locale.label.correct : locale.label.inCorrect}}</span>
+                                </div>
+
+                            </div>
+                        </ng-container>                    
+                    </div>
+                    <div class="result-outer">
+                        <div class="results mg-b15">{{ locale.label.result }}</div>
+
+                        <div class="score">
+                            {{ locale.label.yourScore }}: <span style="margin-left: 8rem;">{{ percentage }}%</span>
+                        </div>
+
+                        <div class="retake" [innerHTML]="locale.label.retake" *ngIf="percentage < 85"></div>
+
+                        <div class="exit" [innerHTML]="locale.label.exit" *ngIf="percentage >= 85"></div>
+                        <!-- <div class="separator"></div> -->
+
+                        <div class="action-button text-center mg-t30" *ngIf="checkIsEnableBtn()">
+                            <button class="btn secondary text-green-btn" (click)="retake()" style="margin-right: 10%;margin-bottom: 10px;">{{ locale.label.retakeBtn }}</button>
+
+                            <button class="btn secondary text-green-btn" (click)="review()" style="margin-right: 10%;margin-bottom: 10px;">{{ locale.label.reviewBtn }}</button>
+
+                            <button class="btn secondary text-red-btn" (click)="exitExam()" style="margin-right: 10%;padding: 0.375rem 2rem;margin-bottom: 10px;">{{ locale.label.exitBtn }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="row">
+            <div class="col-lg-7">
+                © 2021  {{ footer.copyRight }} 
+            </div>
+            <div class="col-lg-5">
+                 {{ footer.poweredBy }} 
+            </div>
+        </div>
+    </div>
+</div>

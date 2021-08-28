@@ -1,0 +1,181 @@
+<div class="container-fluid content" (scroll)="loadMore()">
+    <div class="content-top">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="top-header pd-t3">
+                    {{ locale.label.heading }}
+                </div>
+                <div class="top-body ds-9">
+                    <ol class="content-nav">
+                        <li class="content-nav-item">
+                            <a [routerLink]="['/']">
+                                {{ breadCumb.first }}
+                            </a>
+                        </li>    
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a [routerLink]="['/admin/dashboard']">
+                                {{ locale.label.breadCumb.second }}
+                            </a>    
+                        </li> 
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a>
+                                {{ locale.label.breadCumb.third }}
+                            </a>    
+                        </li>
+                    </ol>
+                </div> 
+            </div>
+            <div class="col-sm-6 text-right">
+                
+            </div>
+        </div>       
+    </div>
+
+    <div class="content-middle">
+        <div class="middle-header">
+            <div class="alert-message">
+                <div class="alert alert-success" role="alert">            
+                </div>
+            </div>
+            <div class="alert-message">
+                <div class="alert alert-danger" role="alert">            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-bottom">
+        <div class="bottom-header ds-9">
+            <div class="row">
+                <div class="col-sm-8 mg-b10 pd-t8 list-heading">
+                    {{ locale.label.list.heading }}
+                </div>
+                <div class="col-sm-4 mg-b10 text-right">
+                    <button class="btn btn-filter btn-filter-bg" (click)="toggleSearchPanel()">
+                        <i class="fa fa-sliders" aria-hidden="true"></i>
+                        {{ locale.label.list.filter }}   
+                    </button>                            
+                </div>
+            </div>
+        </div>
+        <div class="row body-header">
+            <div class="col-sm-8 mg-b10 mg-t10 pd-t8">
+                <ng-container *ngIf="totalCount > 0">
+                    Showing {{ start }} to {{ end }} of {{ totalCount }} entries
+                </ng-container> 
+            </div>
+            <div class="col-sm-4 mg-b10 mg-t10 text-right">
+                <button class="btn btn-filter btn-filter-bg" (click)="toggleSearchPanel()">
+                    <i class="fa fa-sliders" aria-hidden="true"  (click)="toggleSearchPanel()"></i>
+                    {{ locale.label.list.filter }}   
+                </button> 
+                <select class="inpt width-auto limit" (change)="setPageLimit(limit.value, true)" #limit>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+        </div>
+        <div class="bottom-search">
+            <div class="search-panel" [formGroup]="takeExamSearchFrm">
+                <div class="row">
+                    <div class="col-md-4 mg-b10">
+                        <input type="text" class="inpt" placeholder="{{ locale.label.list.panel.setName.placeholder }}" formControlName="setName">
+                    </div>
+                    <div class="col-md-8 mg-b10 text-right">
+                        <button class="btn primary" (click)="getQuestionSetAssignments(true)">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            {{ locale.label.btnSearch }}
+                        </button>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <div class="bottom-filter">
+            <div class="filter-panel mg-t10 mg-b10 applied-filters" *ngIf="isFilterApplied">
+                <div class="row">
+                    <div class="col-sm-6">
+                        {{ locale.label.list.appliedFilter }}:
+                    </div>
+                    
+                    <div class="col-sm-6 text-right">
+                        <a (click)=resetFilters()>
+                            {{ locale.label.list.clearFilters }}
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mg-t10 mg-b10 applied-filters">
+                        <span class="badge rounded-pill bg-secondary pd-5 mg-r5" *ngIf="takeExamSearchFrm.value.setName">
+                            {{ locale.label.list.panel.setName.label }} : {{ takeExamSearchFrm.value.setName }}
+                        </span>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <div class="bottom-body" *ngIf="noRecordFound">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table list take-exam" *ngIf="questionSetAssignments">
+                            <thead>
+                                <tr [attr.data-id]="idx">
+                                    <th>
+                                        {{ locale.label.list.setName }}
+                                        <i class="fa fa-sort" aria-hidden="true" (click)="setSort('setName')"></i>
+                                    </th>
+                                    <th>
+                                        {{ locale.label.list.action }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let questionSetAssignment of questionSetAssignments;let idx = index;">
+                                    <td>
+                                        {{ questionSetAssignment.question_set.setName }}
+                                    </td>
+                                    <td>
+                                        <i class="fa fa-eye pd-r5" aria-hidden="true" title="{{ locale.label.list.title.view }}" [routerLink]="['/admin/exam-details']" [queryParams]="{ id: questionSetAssignment._id }"></i>
+    
+                                        <i class="fa fa-play" aria-hidden="true" title="{{ locale.label.list.title.start }}" [routerLink]="['/admin/commence-exam']" [queryParams]="{ id: questionSetAssignment._id }" *ngIf="!isAdmin"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <div class="footer-panel">
+                <div class="row" *ngIf="!noRecordFound">
+                    <div class="col-lg-12 no-record-found">
+                        <p class="mg-b10">
+                            <i aria-hidden="true" class="fa fa-sliders fs-32"></i>
+                        </p>
+                        <p class="mg-b10">
+                            {{ locale.label.list.noRecordFound }}
+                        </p>
+                        <p class="mg-b10">
+                            {{ locale.label.list.noRecordFoundSorry }}
+                        </p>                    
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="row">
+            <div class="col-lg-7">
+                © 2021  {{ footer.copyRight }} 
+            </div>
+            <div class="col-lg-5">
+                 {{ footer.poweredBy }} 
+            </div>
+        </div>
+    </div>
+</div>

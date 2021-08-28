@@ -1,0 +1,132 @@
+<div class="container-fluid content">
+    <div class="content-top">
+        <div class="top-header">
+            {{ locale.label.heading }}
+        </div>
+        <div class="top-body ds-9">
+            <ol class="content-nav">
+                <li class="content-nav-item">
+                    <a [routerLink]="['/']">
+                        {{ breadCumb.first }}
+                    </a>
+                </li>    
+                <li class="content-nav-item"> 
+                    <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                    <a [routerLink]="['/admin/dashboard']">
+                        {{ locale.label.breadCumb.second }}
+                    </a>    
+                </li> 
+                <li class="content-nav-item"> 
+                    <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                    <a>
+                        {{ locale.label.breadCumb.third }}
+                    </a>    
+                </li>
+            </ol>
+        </div>    
+    </div>
+
+    <div class="content-middle">
+        <div class="middle-header">
+            <div class="alert-message">
+                <div class="alert alert-success" role="alert">            
+                </div>
+            </div>
+            <div class="alert-message">
+                <div class="alert alert-danger" role="alert">            
+                </div>
+            </div>
+        </div>
+        <div class="middle-body">
+            <div class="body-content">
+                <div class="content-inner">
+                    <form [formGroup]="roleTaskFrm" class="role-task-frm" >
+                        <input type="hidden" formControlName="_id">
+                        <div class="form-row">                
+                            <div class="form-group col-lg-12">
+                                <label class="lbl">
+                                    {{ locale.label.roleId.label }}
+                                    <span class="error">*</span>
+                                </label>
+                                
+    
+                                <select class="inpt roleId" formControlName="roleId" [ngClass]="{ 'is-invalid': submitted && f.roleId.errors }" (change)="getRoleTasks(roleIdRef.value)" #roleIdRef>
+                                    <option value="null">
+                                        {{ locale.label.roleId.placeholder }}
+                                    </option>
+                                    <option *ngFor="let role of roles;let roleIdx = index;" value="{{ role._id }}">
+                                        {{ role.roleName }}
+                                    </option>
+                                </select>
+                                
+                                <div *ngIf="submitted && f.roleId.errors" class="error">
+                                    <div *ngIf="f.roleId.errors.required">
+                                        {{ locale.error.roleId.required }}
+                                    </div>
+                                </div>
+            
+                                <div class="server-error error"></div>
+                            </div>                        
+                        </div>
+                        <div class="form-row" *ngIf="isFormReady">                
+                            <div class="form-group col-lg-12">
+                                <label class="lbl">
+                                    {{ locale.label.task.label }}
+                                    <span class="error">*</span>
+                                </label>
+                                <ng-container formArrayName="taskAccess">
+                                    <ng-container>
+                                        <div class="role-task-outer">
+                                            <ng-container>
+                                                <div class="row"> 
+                                                    <div class="col-lg-6 col-md-6 pd-b5 pd-t5" *ngFor="let task of tasks; let taskIdx = index">
+                                                        <div class="row no-gutters" formGroupName="{{taskIdx}}">
+                                                            <div class="col-lg-4 mg-b5">
+                                                                <input type="hidden"  formControlName="taskId">
+                                                                {{ task.taskName }}
+                                                            </div>
+                                                            <div class="col-lg-8 mg-b5" formArrayName="access">
+                                                                <ng-container *ngFor="let roleAccs of locale.label.roleAccess;let roleAcIdx = index;">
+                                                                    <input type="checkbox" id="checkbox-{{ taskIdx }}{{ roleAcIdx }}" class="regular-checkbox access" formControlName="{{ roleAcIdx }}" value="{{ roleAccs.key }}">
+                                                                    <label for="checkbox-{{ taskIdx }}{{ roleAcIdx }}"></label>
+                                                                    <span class="filter-widget-text"> 
+                                                                        {{ roleAccs.value }}
+                                                                    </span>
+                                                                </ng-container>                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>                                    
+                                            </ng-container>
+                                        </div>
+                                    </ng-container>
+                                </ng-container> 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <button class="btn primary mg-r10" (click)="saveRoleTasks()">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    {{ locale.label.btnPrimary }}
+                </button>
+    
+                <button class="btn secondary" (click)="resetFrm()">
+                    <i class="fa fa-undo" aria-hidden="true"></i>
+                    {{ locale.label.btnSec }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="row">
+            <div class="col-lg-7">
+                © 2021  {{ footer.copyRight }} 
+            </div>
+            <div class="col-lg-5">
+                 {{ footer.poweredBy }} 
+            </div>
+        </div>
+    </div>
+</div>

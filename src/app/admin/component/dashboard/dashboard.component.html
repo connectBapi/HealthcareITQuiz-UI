@@ -1,0 +1,229 @@
+<div class="container-fluid content">
+    <div class="content-top">
+        <div class="row">
+            <div class="col-sm-6 mg-b30">
+                <div class="top-header pd-t3">
+                    Dashboard
+                </div> 
+            </div>
+            <div class="col-sm-6 mg-b30 text-right">
+                
+            </div>
+        </div>   
+    </div>
+    
+    <div class="content-middle">
+        <div class="middle-header">
+            <div class="alert-message">
+                <div class="alert alert-success" role="alert">            
+                </div>
+            </div>
+            <div class="alert-message">
+                <div class="alert alert-danger" role="alert">            
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-bottom">
+        <div class="row" *ngIf="isAdmin">
+            <div class="col-sm-4 mg-b30">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title text-center">
+                        Total Specialities
+                    </h5>
+                    <p class="card-text card-title-cnt">
+                        {{ data?.specialityCnt }}
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mg-b30">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            Total Categories
+                        </h5>
+                        <p class="card-text card-title-cnt">
+                            {{ data?.categoryCnt }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mg-b30">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            Total Questions
+                        </h5>
+                        <p class="card-text card-title-cnt">
+                            {{ data?.questionCnt }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="isAdmin">
+            <div class="col-sm-6 mg-b30">
+                <div class="card">
+                    <div class="card-body" style="padding: 0;">
+                    <!-- <h5 class="card-title">
+                        Total Specialities
+                    </h5> -->
+                    <p class="card-text">
+                        <ng-container *ngIf="data?.questionByCategory">
+                            <div class="table-responsive-sm">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Speciality Name</th>
+                                            <th scope="col">Category Name</th>
+                                            <th scope="col">No Of Questions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let obj1 of data.questionByCategory">
+                                            <td>
+                                                {{ obj1.speciality }}
+                                            </td>
+                                            <td>
+                                                {{ obj1.categoryId }}
+                                            </td>
+                                            <td>
+                                                {{ obj1.count }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                              </div>
+                        </ng-container>
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 mg-b30">
+                <div class="card">
+                    <div class="card-body" style="padding: 0;">
+                        <!-- <h5 class="card-title">
+                            Question
+                        </h5> -->
+                        <p class="card-text">
+                            <ng-container *ngIf="data?.questionCountBySet">
+                                <div class="table-responsive-sm">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    Question Set Name
+                                                </th>
+                                                <th scope="col">
+                                                    No Of Questions
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let obj1 of data.questionCountBySet">
+                                                <td>
+                                                    {{ obj1.setName }}
+                                                </td>
+                                                <td>
+                                                    {{ obj1.count }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                            </ng-container>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="!isAdmin">
+            <div class="col-sm-6 mg-b30">
+                <div class="card">
+                    <div class="card-body" style="padding: 0;">
+                    <!-- <h5 class="card-title">
+                        Total Specialities
+                    </h5> -->
+                    <p class="card-text">
+                        <ng-container *ngIf="data?.questionAnswerBySet">
+                            <div class="table-responsive-sm">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Quiz Set</th>
+                                            <th scope="col">No Of Attempts</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let obj1 of data.questionAnswerBySet">
+                                            <td>
+                                                {{ obj1.questionSet }}
+                                            </td>
+                                            <td>
+                                                {{ obj1.count }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                              </div>
+                        </ng-container>
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 mg-b30" *ngIf="!isAdmin">
+                <div class="card">
+                    <div class="card-body" style="padding: 0;">
+                        <!-- <h5 class="card-title">
+                            Question
+                        </h5> -->
+                        <p class="card-text">
+                            <ng-container *ngIf="data?.unAnseredQuestionSet">
+                                <div class="table-responsive-sm">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    Quiz Set
+                                                </th>
+                                                <th scope="col">
+                                                    Date
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let obj1 of data.unAnseredQuestionSet">
+                                                <td>
+                                                    {{ obj1.questionSet.setName }}
+                                                </td>
+                                                <td>
+                                                    {{ obj1.createdDate | date: 'dd-MM-yyyy' }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                            </ng-container>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="row">
+            <div class="col-lg-7">
+                © 2021  {{ footer.copyRight }} 
+            </div>
+            <div class="col-lg-5">
+                 {{ footer.poweredBy }} 
+            </div>
+        </div>
+    </div>
+</div>

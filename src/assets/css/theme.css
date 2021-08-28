@@ -1,0 +1,177 @@
+.default {
+    --theme-color: #fff;
+    --theme-btn-sec-bg: #868e96;
+    --theme-btn-sec-clr: #868e96;
+
+    --theme-bg-white: #FFFFFF;
+
+    /* Main Theme */
+    --theme-background: #00bcc2;
+    --theme-border: #00bcc2;
+    --theme-color: #fff;
+    
+    --theme-border-hover: #008b8f;
+    --theme-background-hover: #00979c;
+    --theme-color-hover: #fff;
+    
+    /* Button Primary */
+    --theme-btn-primary-bg: #00bcc2;
+    --theme-btn-primary-border: #00bcc2;
+    --theme-btn-primary-clr: #fff;
+
+    --theme-btn-primary-bg-hover: #008b8f;
+    --theme-btn-primary-border-hover: #00979c;
+    --theme-btn-primary-clr-hover: #fff;
+
+    /* Button Seconadary */
+    --theme-btn-sec-bg: #868e96;
+    --theme-btn-sec-border: #868e96;
+    --theme-btn-sec-clr: #fff;
+
+    --theme-btn-sec-bg-hover: #727b84;
+    --theme-btn-sec-border-hover: #6c757d;
+    --theme-btn-sec-clr-hover: #fff;
+
+    --theme-left-pane-bg: #303840;
+    --theme-left-pane-color: #949799
+}
+.cyan {
+	--theme-color: #fff;
+    --theme-background: #26ae61;
+    --theme-color-sec: #26ae61;
+    --theme-background-sec: #d5ffe7;
+    --theme-color-third: #ff6046;
+    --theme-background-third: #ffd8d2;
+    --theme-a-color: #64d393;
+    --theme-a-hover-color:#26ae61;
+}
+.green {
+	--theme-color: #fff;
+    --theme-background: #00e78d;
+    --theme-color-sec: #00e78d;
+    --theme-background-sec: #d1fbee;
+    --theme-color-third: #ff6046;
+    --theme-background-third: #ffd8d2;
+}
+.pink {
+	--theme-color: #fff;
+    --theme-background: #f44375;
+    --theme-color-sec: #f44375;
+    --theme-background-sec: #ffc7d5;
+    --theme-color-third: #ff6046;
+    --theme-background-third: #ffd8d2;
+}
+.purple {
+	--theme-color: #fff;
+    --theme-background: #8546c9;
+    --theme-color-sec: #8546c9;
+    --theme-background-sec: #f3bef7;
+    --theme-color-third: #ff6046;
+    --theme-background-third: #ffd8d2;
+}
+.blue {
+	--theme-color: #fff;
+    --theme-background: #00b7f4;
+    --theme-color-sec: #00b7f4;
+    --theme-background-sec: #bcecf9;
+    --theme-color-third: #ff6046;
+    --theme-background-third: #ffd8d2;
+}
+.yellow {
+	--theme-color: #fff;
+    --theme-background: #fecb46;
+    --theme-color-sec: #fecb46;
+    --theme-background-sec: #fff5d9;
+    --theme-color-third: #ff6046;
+    --theme-background-third: #ffd8d2;
+}
+
+.clindcast {
+    --theme-color: #fff;
+    --theme-btn-sec-bg: #868e96;
+    --theme-btn-sec-clr: #868e96;
+
+    --theme-bg-white: #FFFFFF;
+
+    /* Main Theme */
+    --theme-background: #00bcc2;
+    --theme-border: #00bcc2;
+    --theme-color: #fff;
+    
+    --theme-border-hover: #008b8f;
+    --theme-background-hover: #00979c;
+    --theme-color-hover: #fff;
+    
+    /* Button Primary */
+    --theme-btn-primary-bg: #00bcc2;
+    --theme-btn-primary-border: #00bcc2;
+    --theme-btn-primary-clr: #fff;
+
+    --theme-btn-primary-bg-hover: #008b8f;
+    --theme-btn-primary-border-hover: #00979c;
+    --theme-btn-primary-clr-hover: #fff;
+
+    /* Button Seconadary */
+    --theme-btn-sec-bg: #868e96;
+    --theme-btn-sec-border: #868e96;
+    --theme-btn-sec-clr: #fff;
+
+    --theme-btn-sec-bg-hover: #727b84;
+    --theme-btn-sec-border-hover: #6c757d;
+    --theme-btn-sec-clr-hover: #fff;
+
+    /* Admin*/
+    --theme-left-pane-bg: #173058;
+    --theme-left-pane-color: #949799;
+}
+.primary {
+    background: var(--theme-btn-primary-bg);
+    color: var(--theme-btn-primary-clr);
+    border: 1px solid var(--theme-btn-primary-border);
+}
+.primary:hover {
+    background: var(--theme-btn-primary-bg-hover);
+    color: var(--theme-btn-primary-clr-hover);
+    border: 1px solid var(--theme-btn-primary-border-hover);
+}
+.secondary {
+    background: var(--theme-btn-sec-bg);
+    color: var(--theme-btn-sec-clr);
+    border: 1px solid var(--theme-btn-sec-border);
+}
+.secondary:hover {
+    background: var(--theme-btn-sec-bg-hover);
+    color: var(--theme-btn-sec-clr-hover);
+    border: 1px solid var(--theme-btn-sec-border-hover);
+}
+.ms-ctn {
+    padding: 3.5px 12px;
+}
+.ms-ctn .ms-sel-item {
+    margin: 2.5px 5px 0 0;
+}
+.ms-ctn-focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: var(--theme-background);
+}
+/* .ms-ctn .ms-sel-ctn {
+    margin-left: 37px;
+} */
+.ms-sel-ctn i {
+    position: absolute;
+    z-index: 20;
+    left: 0;
+}
+.ms-inv {
+    border: 1px solid #ced4da;
+}
+.badge {
+    color: #FFFFFF;
+}
+.modal-title {
+    font-weight: bold;
+}
+/* .table-responsive {
+    max-height: 500px;
+} */

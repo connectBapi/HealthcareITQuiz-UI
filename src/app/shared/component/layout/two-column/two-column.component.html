@@ -1,0 +1,191 @@
+<div class="loading-overlay ds-9">
+	<div class="lds-spinner">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>
+
+<div class="main-app">            
+	<div class="app-left">
+		<div class="company-logo">
+			<div class="toggle-arrow" (click)="toggleNavMenu()">
+				<i class="fa fa-bars fs-24"></i>
+			</div>
+			<img class="image-fluid" style="width: 150px;height:50px;" src="./../../../../../assets/img/logo1.png">                    
+		</div>
+		<div class="left-menu">
+			<ul class="left-nav-menu">
+				<li>
+					<a [routerLink]="['/admin/dashboard']">
+						<i class="fa fa-bar-chart pd-r5" aria-hidden="true"></i>  {{ locale.admin.navMenu.dashboard.label }}
+					</a>
+				</li>
+				<li (click)="toggleLeftNavMenu($event);$event.stopPropagation();" *ngIf="capability?.csum?.isRead">
+					<a>
+						<i class="fa fa-users pd-r5" aria-hidden="true"></i>
+						{{ locale.admin.navMenu.admin.menu.label }}
+						<i class="fa fa-angle-up nav-menu-i-right"></i>
+					</a>                        
+					<ul class="nav-sub-menu admin ds-9">
+						<li *ngIf="capability?.cmr?.isRead">
+							<a [routerLink]="['/admin/role']" [routerLinkActive]="['active']">
+								<i class="fa fa-universal-access pd-r5 ds-9" aria-hidden="true"></i>
+								{{ locale.admin.navMenu.admin.menu.subMenu.role.label }}
+							</a>                                
+						</li>
+						<li *ngIf="capability?.cmt?.isRead">
+							<a [routerLink]="['/admin/task']" [routerLinkActive]="['active']">
+								<i class="fa fa-tasks pd-r5 ds-9" aria-hidden="true"></i>
+								{{ locale.admin.navMenu.admin.menu.subMenu.task.label }}
+							</a>                                
+						</li>
+						<li *ngIf="capability?.cmrt?.isRead">
+							<a [routerLink]="['/admin/role-task']" [routerLinkActive]="['active']">
+								<i class="fa fa-user-secret pd-r5 ds-9" aria-hidden="true"></i>
+								{{ locale.admin.navMenu.admin.menu.subMenu.roleTask.label }}
+							</a>                                
+						</li>
+						<li *ngIf="capability?.cmu?.isRead">
+							<a [routerLink]="['/admin/user']" [routerLinkActive]="['active']">
+								<i class="fa fa-user pd-r5 ds-9" aria-hidden="true"></i>
+								{{ locale.admin.navMenu.admin.menu.subMenu.user.label }}
+							</a>                                
+						</li>
+					</ul>
+				</li>
+				<li (click)="toggleLeftNavMenu($event)" *ngIf="capability?.csmm?.isRead">
+					<a>
+						<i class="fa fa-address-book pd-r5" aria-hidden="true"></i>
+						{{ locale.admin.navMenu.master.label }}
+						<i class="fa fa-angle-up nav-menu-i-right"></i>
+					</a>                        
+					<ul class="nav-sub-menu master ds-9">
+						<li *ngIf="capability?.cms?.isRead">
+							<a [routerLink]="['/admin/speciality']" [routerLinkActive]="['active']">Speciality</a>                                
+						</li>
+						<li *ngIf="capability?.cmc?.isRead">
+							<a [routerLink]="['/admin/category']" [routerLinkActive]="['active']">Category</a>                                
+						</li>
+						<li *ngIf="capability?.cmq?.isRead">
+							<a [routerLink]="['/admin/question']" [routerLinkActive]="['active']">Questions</a>                                
+						</li>
+					</ul>
+				</li>
+				<li (click)="toggleLeftNavMenu($event)" *ngIf="capability?.csbm?.isRead">
+					<a>
+						<i class="fa fa-folder pd-r5" aria-hidden="true"></i>
+						{{ locale.admin.navMenu.builder.label }}
+						<i class="fa fa-angle-up nav-menu-i-right"></i>
+					</a>                        
+					<ul class="nav-sub-menu builder ds-9">
+						<li *ngIf="capability?.cmb?.isRead">
+							<a [routerLink]="['/admin/question-set']" [routerLinkActive]="['active']">Exam Question Set</a>                                
+						</li>
+					</ul>
+				</li>
+				<li (click)="toggleLeftNavMenu($event)" *ngIf="capability?.csam?.isRead">
+					<a>
+						<i class="fa fa-list-alt pd-r5" aria-hidden="true"></i>
+						{{ locale.admin.navMenu.assigner.label }}
+						<i class="fa fa-angle-up nav-menu-i-right"></i>
+					</a>                        
+					<ul class="nav-sub-menu assigner ds-9">
+						<li *ngIf="capability?.cma?.isRead">
+							<a [routerLink]="['/admin/question-assignment']" [routerLinkActive]="['active']">Exam Question Assignment</a>                                
+						</li>
+					</ul>
+				</li>
+				<li (click)="toggleLeftNavMenu($event)" *ngIf="capability?.cspm?.isRead">
+					<a>
+						<i class="fa fa-graduation-cap pd-r5" aria-hidden="true"></i>
+						{{ locale.admin.navMenu.professionals.label }}
+						<i class="fa fa-angle-up nav-menu-i-right"></i>
+					</a>                        
+					<ul class="nav-sub-menu professional ds-9">
+						<li *ngIf="capability?.cmp?.isRead">
+							<a [routerLink]="['/admin/take-exam']" [routerLinkActive]="['active']">Take Quiz</a>                                
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="app-right">
+		<div class="container-fluid header">
+			<div class="row sticky">
+				<div class="col-2 col-xs-1 header-left">
+					<i class="fa fa-bars fs-24" (click)="toggleNavMenu()"></i>
+				</div>
+				<div class="col-10 col-xs-11 text-right header-right">
+					<!-- <div class="language menu menu-toggle" (click)="toggleLang()">
+						<span class="lang-code">
+							{{ locale.language.code[lang] }}
+						</span>
+						<i class="fa fa-language mg-r5 fs-24"></i> 
+						<i class="fa fa-caret-down fs-16"></i>
+						<div class="drop-down lang">
+							<a class="item" (click)="navigatePageByLocale('en')" [ngClass]="(lang === 'en') ? 'active' : ''" value="en">{{ locale.language.en }}</a>
+                    		<a class="item" (click)="navigatePageByLocale('ar')" [ngClass]="(lang === 'ar') ? 'active' : ''" value="ar">{{ locale.language.ru }}</a>
+						</div>
+					</div>
+					<div class="notification menu" (click)="toggleNotification()">
+						<i class="fa fa-bell-o fs-24"></i>        
+						<span class="badge badge-notifications badge-accent badge-cnt">2</span>  
+						<div class="drop-down badg-cont">
+							<a class="item active" href="">
+								{{ locale.language.en }}
+							</a>
+							<a class="item" href="">
+								{{ locale.language.ru }}
+							</a>
+						</div>                      
+					</div> -->
+					
+					<div class="profile menu" (click)="toggleMyAccount()">
+						<span style="float: left;">
+							<img width="32" height="32" class="rounded-circle ds-9" src="../assets/img/guy-3.jpg">
+						</span>
+						
+
+						<span style="float: right;" class="">
+							<span class="">
+								{{ currentUser?.firstName }} {{ currentUser?.lastName }}
+							</span>
+							<br/>
+							<small class="">
+								{{ currentUser?.roles[currentUser.defaultRole] }}
+							</small>
+						</span>                                
+						<span class="clr-both"></span> 
+					</div>
+					<i class="fa fa-caret-down fs-16 mg-t15"  (click)="toggleMyAccount()"></i>
+					<div class="drop-down my-account">
+						<a class="item" [routerLink]="['/admin/profile']" [routerLinkActive]="['active']">
+							{{ locale.admin.header.myAccount.profile }}
+						</a>						
+						<a class="item" [routerLink]="['/admin/change-password']" [routerLinkActive]="['active']">
+							{{ locale.admin.header.myAccount.changePassword }}
+						</a>
+						<a class="item" (click)="logout()">
+							{{ locale.admin.header.myAccount.logout }}
+						</a>
+					</div>    
+					
+				</div>
+			</div>								
+		</div>
+		
+		<router-outlet></router-outlet>
+	</div>
+	<div class="clr-both"></div>
+</div>

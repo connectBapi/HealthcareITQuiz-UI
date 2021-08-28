@@ -1,0 +1,152 @@
+<div class="loading-overlay ds-9">
+	<div class="lds-spinner">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>		            
+<div class="container-fluid full-height">
+    <div class="row justify-content-center full-height">
+        <div class="col-lg-8 col-md-6 col-sm-4 signin-bg">
+
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-8 signin"> 
+            <div class="server-scroll-top"></div>            
+            <div class="alert-message1">
+                <div class="alert-success pd-10" role="alert">            
+                </div>
+            </div>
+            <div class="alert-message1">
+                <div class="alert-danger pd-10" role="alert">            
+                </div>
+            </div>           
+            <div class="text-center">
+                <img class="image-fluid" style="width: 150px;height:50px;" src="./../../../../assets/img/logo1.png">
+            </div>
+            <h2 class="text-center mg-t20">
+                {{ locale.label.heading }}                
+            </h2>
+            <p class="text-center mg-b30">
+                {{ locale.label.subHeading }}
+            </p>                        
+            <form class="signup-frm" [formGroup]="signupFrm">
+                <div class="form-row">                
+                    <div class="form-group col">
+                        <label class="lbl">
+                            {{ locale.label.firstName.label }}
+                        </label>
+                        
+                        <i class="fa fa fa-user  fs-pad-form" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" aria-hidden="true"></i>
+                    
+                        <input type="text" class="inpt firstName" placeholder="{{ locale.label.firstName.placeholder }}" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                        
+                        <div *ngIf="submitted && f.firstName.errors" class="error">
+                            <div *ngIf="f.firstName.errors.required">
+                                {{ locale.error.firstName.required }}
+                            </div>
+                        </div>
+                    
+                        <div class="server-error error"></div>
+                    </div> 
+                    
+                    <div class="form-group col">
+                        <label class="lbl">
+                            {{ locale.label.lastName.label }}
+                        </label>
+                        
+                        <i class="fa fa fa-user  fs-pad-form" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" aria-hidden="true"></i>
+                    
+                        <input type="text" class="inpt lastName" placeholder="{{ locale.label.lastName.placeholder }}" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                        
+                        <div *ngIf="submitted && f.lastName.errors" class="error">
+                            <div *ngIf="f.lastName.errors.required">
+                                {{ locale.error.lastName.required }}
+                            </div>
+                        </div>
+                    
+                        <div class="server-error error"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label class="lbl">
+                            {{ locale.label.email.label }}
+                        </label>
+                        
+                        <i class="fa fa-envelope-o fs-pad-form" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" aria-hidden="true"></i>
+                
+                        <input type="text" class="inpt email" placeholder="{{ locale.label.email.placeholder }}" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                        
+                        <div *ngIf="submitted && f.email.errors" class="error">
+                            <div *ngIf="f.email.errors.required">
+                                {{ locale.error.email.required }}
+                            </div>
+                            <div *ngIf="f.email.errors.email">
+                                {{ locale.error.email.pattern }}
+                            </div>
+                        </div>
+
+                        <div class="server-error error"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label class="lbl">
+                            {{ locale.label.password.label }}
+                        </label>
+                        
+                        <i class="fa fa-lock fs-pad-form" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" aria-hidden="true"></i>
+
+                        <input type="password" class="inpt password" placeholder="{{ locale.label.password.placeholder }}" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        
+                        <div *ngIf="submitted && f.password.errors" class="error">
+                            <div *ngIf="f.password.errors.required">
+                                {{ locale.error.password.required }}
+                            </div>
+                            <div *ngIf="f.password.errors.minlength">
+                                {{ locale.error.password.min }}
+                            </div>
+                            <div *ngIf="f.password.errors.pattern">
+                                {{ locale.error.password.pattern }}
+                            </div>
+                        </div>
+
+                        <div class="server-error error"></div>
+                    </div>
+                </div>
+                <div class="form-row text-center">
+                    <div class="form-group col">
+                        <button class="btn primary" (click)="signup()">
+                            {{ locale.label.btnPrimary }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="form-row text-center">
+                <div class="form-group col">
+                    <a [routerLink]="['/signin']">
+                        {{ locale.label.signin }} 
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-row text-center">
+                <div class="form-group col">
+                    <a [routerLink]="['/reset']">
+                        {{ locale.label.forgotPassword }}
+                    </a>
+                </div>
+            </div>
+        </div>                    
+    </div>
+</div>

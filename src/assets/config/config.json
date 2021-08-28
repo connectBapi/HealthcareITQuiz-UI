@@ -1,0 +1,27 @@
+{
+    "defaultLang": "en",
+    "env": {
+        "name":"Dev"
+    },
+    "defaultPassword": "Test@1234",
+    "routes": {
+        "baseUrl": "https://quiz.clindcast.com:5000/",
+        "usersEndPoint": "api/v1/users",
+        "rolesEndPoint": "api/v1/roles",
+        "tasksEndPoint": "api/v1/tasks",
+        "roleTasksEndPoint": "api/v1/role-tasks",
+        "specialityEndPoint": "api/v1/specialities",
+        "categoryEndPoint": "api/v1/categories",
+        "questionEndPoint": "api/v1/questions",
+        "questionSetEndPoint": "api/v1/question-sets",
+        "questionSetAssignmentEndPoint": "api/v1/question-set-assignments",
+        "questionAnswerEndPoint": "api/v1/question-answers",
+        "getCategoriesBySpeciality": "api/v1/categories-by-speciality",
+        "getQuestionsByCategory": "api/v1/questions-by-category",
+        "login": "login", 
+        "changePassword": "change-password",
+        "questionResultByQuestionSetId": "api/v1/question-answers-by-questionset-assignment-id",
+        "examReview": "api/v1/exam-review",
+        "dashboard": "api/v1/admin/dashboard"
+    }
+}

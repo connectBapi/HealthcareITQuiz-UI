@@ -1,0 +1,1385 @@
+{
+    "language":{
+        "en": "English",
+        "ru": "Arabic",
+        "code": {
+            "en": "En",
+            "ar": "Ar"
+        }
+    },    
+    "signin": {
+        "label": {
+            "formCls": "signin-frm",
+            "heading": "Sign in to ClinDCast",
+            "subHeading": "Using your ClinDCast account.",
+            "termsCond": "By creating an account, you agree to the Terms of Service. For more information about ClinDCast's privacy practices, see the ClinDCast Privacy Statement. We'll occasionally send you account-related emails.",
+            "email": {
+                "label": "Email",
+                "placeholder": "Enter email address"                
+            },
+            "password": {
+                "label": "Password",
+                "placeholder": "Enter your password"                
+            },
+            "btnPrimary": "Sign in",
+            "forgotPassword": "Forgot Password?",
+            "dontHaveAccount": "Create an account"
+        },
+        "error": {
+            "email": {
+                "required": "This field is required.",
+                "pattern": "Email must be a valid email address.",
+                "exist": "Email already exist"                
+            },
+            "password": {
+                "required": "This field is required.",
+                "minLength": "Password must be at least 6 characters.",
+                "maxLength": "Maximun 16 characters allowed in password.",
+                "pattern": "Password should contain 1 letter 1 number 1 special chracter.",
+                "wrongPassword": "Pasword is incorrect."
+            },
+            "api": { 
+                "authorrization_header_missing": "You are unauthorised to see this page",
+                "invalidEmailOrPassword": "Incorrect username or password.",
+                "maxAttempt": "You have tried 3 wrong attempt. kindly login after 5 minutes",
+                "accountNotActivated": "You have not activated your account.Kindly activate your account or if you are unable to find activation mail you can reset your account.",
+                "accountReseted": "You have reset your account.Kindly complete reset process or reinitiate reset process in order to login."
+            }
+        },
+        "success": {
+            "api": {
+                "saved": "You have signed in successfully."
+            }
+        } 
+    },
+    "signup": {
+        "label": {
+            "formCls": "signup-frm",
+            "heading": "Sign up to ClinDCast",
+            "subHeading": "Using your ClinDCast account.",
+            "firstName": {
+                "label": "First Name",
+                "placeholder": "Enter first name"                
+            },
+            "lastName": {
+                "label": "Last Name",
+                "placeholder": "Enter last name"                
+            },
+            "email": {
+                "label": "Email",
+                "placeholder": "Enter email address"                
+            },            
+            "password": {
+                "label": "Password",
+                "placeholder": "Enter your password"                
+            },
+            "btnPrimary": "Sign up",
+            "signin": "Sign In",
+            "alreadyAccount": "Already have an account?",
+            "forgotPassword": "Forgot Password?"
+        },
+        "error": {
+            "firstName": {
+                "required": "This field is required."
+            },
+            "lastName": {
+                "required": "This field is required."
+            },
+            "email": {
+                "required": "This field is required.",
+                "pattern": "Email must be a valid email address.",
+                "exist": "Email address already exist."
+            },
+            "password": {
+                "required": "This field is required.",
+                "minLength": "Password must be at least 6 characters.",
+                "maxLength": "Maximun 16 characters allowed in password.",
+                "pattern": "Password should contain 1 letter 1 number 1 special chracter.",
+                "wrongPassword": "Pasword is incorrect."
+            },
+            "api": { 
+                "authorrization_header_missing": "You are unauthorised to see this page"
+            }
+        },
+        "success": {
+            "api": {
+                "saved": "You have successfully registered. Kindly check your email for account activation mail."
+            }
+        } 
+    },
+    "reset": {
+        "label": {
+            "formCls": "reset-frm",
+            "heading": "Reset ClinDCast",
+            "subHeading": "Using your ClinDCast account.",
+            "email": {
+                "label": "Email",
+                "placeholder": "Enter your email address"                
+            },
+            "btnPrimary": "Send password reset link",
+            "dontHaveAccount": "Don't have an account?",
+            "signin": "Sign In"
+        },
+        "error": {
+            "email": {
+                "required": "This field is required.",
+                "pattern": "Email must be a valid email address.",
+                "userNotExist": "Email id not found."
+            },
+            "api": {}
+        },
+        "success": {
+            "api": {
+                "resetLinkSent": "We have sent you an email reset link to your email kindly check."
+            }
+        }
+    },
+    "recover": {
+        "label": {
+            "formCls": "recover-frm",
+            "heading": "Recover your password",
+            "subHeading": "Enter your user account's new password to continue our portal.",
+            "password": {
+                "label": "Password",
+                "placeholder": "Enter your recover password"                
+            },
+            "btnPrimary": "Submit",
+            "signin": "Sign In",
+            "alreadyAccount": "Already have an account?"
+        },
+        "error": {
+            "password": {
+                "required": "This field is required.",
+                "minLength": "Password must be at least 6 characters.",
+                "maxLength": "Maximun 16 characters allowed in password.",
+                "pattern": "Password should contain 1 letter 1 number 1 special chracter.",
+                "wrongPassword": "Pasword is incorrect."
+            },
+            "api": {
+                "invalidResetLink": "Either you have recovered your password or not a valid link"
+            }
+        },
+        "success": {
+            "api": {
+                "reseted": "You have successfully recover your pasword. kindly login with new password."
+            }
+        }
+    },
+    "activate": {
+        "label": {
+            "formCls": "activate-frm",
+            "heading": "You have successfully activated your account.",
+            "invalidLink": "Either you have already activated your account or not a valid link",
+            "signin": "Sign In"
+        },
+        "error": {
+            "api": {
+                "invalidActivationLink": "Either you have already activated your account or not a valid link"
+            }
+        },
+        "success": {
+            "api": {
+                "activated": "You have successfully activate your account."
+            }
+        }
+    },
+    "admin": {
+        "navMenu": {
+            "dashboard": {
+                "label": "Dashboard"
+            },
+            "admin": {
+                "menu": {
+                    "label": "Admin",
+                    "subMenu": {
+                        "role": {
+                            "label": "Role"
+                        },
+                        "task": {
+                            "label": "Task"
+                        },
+                        "roleTask": {
+                            "label": "Role Task"
+                        },
+                        "user": {
+                            "label": "User"
+                        }
+                    }
+                }
+            },
+            "master": {
+                "label": "Master"
+            },
+            "builder": {
+                "label": "Builder"
+            },
+            "assigner": {
+                "label": "Assigner"
+            },
+            "professionals": {
+                "label": "Professionals"
+            },
+            "setting": {
+                "label": "Setting"
+            }
+        },
+        "header": {
+            "myAccount": {
+                "profile": "My Profile",
+                "changePassword": "Change Password",
+                "logout": "Logout"
+            }
+        },
+        "breadComb": {
+            "first": "Home",
+            "second": "Dashboard"
+        },
+        "dashboard": {
+            "label": {
+            },
+            "error": {
+            },
+            "success": {
+                "ui": {},
+                "api": {}
+            } 
+        },
+        "profile": {
+            "label": {
+                "formCls": "profile-frm",
+                "heading": "Manage Profile",
+                "title": "My Profile",
+                "breadCumb": {
+                    "second": "My Account"              
+                },
+                "firstName": {
+                    "label": "First Name",
+                    "placeholder": "Enter first name"                
+                },
+                "lastName": {
+                    "label": "Last Name",
+                    "placeholder": "Enter last name"                
+                },
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Enter your email"                
+                },
+                "mobile": {
+                    "label": "Mobile",
+                    "placeholder": "Enter your mobile no"                
+                },
+                "btnPrimary": "Update",
+                "btnSec": "Reset"
+            },
+            "error": {
+                "firstName": {
+                    "required": "This field is required."
+                },
+                "lastName": {
+                    "required": "This field is required."
+                },  
+                "email": {
+                    "required": "This field is required.",
+                    "pattern": "Email must be a valid email address.",
+                    "exist": "Email address already exist."
+                },              
+                "mobile": {
+                    "required": "This field is required.",
+                    "minLength": "Mobile must be at least 10 digit.",
+                    "pattern": "Enter valid number."
+                },
+                "api": { 
+                    "authorization": "You are unauthorised to see this page."
+                }
+            },
+            "success": {
+                "api": {
+                    "updated": "Profile has been updated successfully."
+                }
+            }
+        },
+        "changePassword": {
+            "label": {
+                "formCls": "change-password-frm",
+                "heading": "Manage Password",
+                "title": "Change Password",
+                "breadCumb": {
+                    "second": "My Account",
+                    "third": "Change Password"             
+                },
+                "password": {
+                    "label": "Current Password ",
+                    "placeholder": "Enter current password"                
+                },
+                "newPassword": {
+                    "label": "New Password",
+                    "placeholder": "Enter your new password"                
+                },
+                "confirmPassword": {
+                    "label": "Confirm Password",
+                    "placeholder": "Enter your confirm password"                
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset"
+            },
+            "error": {
+                "password": {
+                    "required": "This field is required.",
+                    "minLength": "Password must be at least 6 characters.",
+                    "maxLength": "Password should not more than 16 characters.",
+                    "pattern": "Password should contain 1 letter 1 number 1 special chracter.",
+                    "wrongPassword": "wrongPassword"
+                },
+                "newPassword": {                
+                    "required": "This field is required.",
+                    "minLength": "Password must be at least 6 characters.",
+                    "maxLength": "Password should not more than 16 characters.",
+                    "pattern": "Password should contain 1 letter 1 number 1 special chracter."
+                },
+                "confirmPassword": {
+                    "required": "This field is required.",                    
+                    "pattern": "Password should contain 1 letter 1 number 1 special chracter.",
+                    "mustMatch": "Passwords must match."
+                },
+                "api": { 
+                    "authorrization_header_missing": "You are unauthorised to see this page"
+                }
+            },
+            "success": {
+                "api": {
+                    "passwordChanged": "Password has been changed successfully."
+                }
+            } 
+        },
+        "role": {
+            "label": {
+                "formCls": "role-frm",
+                "heading": "Manage Role",
+                "addRole": "Add a new Role",
+                "updateRole": "Update Role",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Role"             
+                },
+                "roleName": {
+                    "label": "Role Name ",
+                    "placeholder": "Enter role name"                
+                },
+                "list": {
+                    "heading": "Role List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "roleName": "Role Name",
+                    "code": "Code",
+                    "date": "Date",                    
+                    "action": "Action",
+                    "title": {
+                        "edit": "Click her to edit",
+                        "delete": "Click her to delete"
+                    },
+                    "panel": {
+                        "roleName": {
+                            "label": "Role Name",
+                            "placeholder": "Search by role name"
+                        },
+                        "code": {
+                            "label": "Code",
+                            "placeholder": "Search by code"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching the filters provided"         
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search"
+            },
+            "error": {
+                "roleName": {
+                    "required": "This field is required.",
+                    "exist": "Role name already exist.",
+                    "notFound": "Role name not found."
+                },
+                "code": {
+                    "required": "This field is required."
+                },
+                "api": {
+                    "authorization": "You are unauthorised to see this page.",
+                    "foreignKeyReferenceExist": "Role you are trying to delete has a reference in users table or role_tasks table."
+                }
+            },
+            "success": {
+                "api": {
+                    "saved": "Role has been saved successfully.", 
+                    "updated": "Role has been updated successfully.",  
+                    "deleted": "Role has been deleted successfully."
+                }
+            } 
+        },
+        "task": {
+            "label": {
+                "formCls": "task-frm",
+                "heading": "Manage Task",
+                "addTask": "Add a new Task",
+                "updateTask": "Update Task",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Task"             
+                },
+                "taskName": {
+                    "label": "Task Name",
+                    "placeholder": "Enter task name"                
+                },
+                "list": {
+                    "heading": "Task List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "taskName": "Task Name",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "edit": "Click her to edit",
+                        "delete": "Click her to delete"
+                    },
+                    "panel": {
+                        "taskName": {
+                            "placeholder": "Search by task name",
+                            "label": "Task Name"
+                        },
+                        "code": {
+                            "placeholder": "Search by code",
+                            "label": "Code"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching the filters provided"            
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search"
+            },
+            "error": {
+                "taskName": {
+                    "required": "This field is required.",
+                    "exist": "Task name already exist.",
+                    "notFound": "Task name not found."
+                },
+                "code": {
+                    "required": "This field is required."
+                },
+                "api": {
+                    "authorization": "You are unauthorised to see this page.",
+                    "foreignKeyReferenceExist": "Task you are trying to delete has a reference role_tasks table."
+                }
+            },
+            "success": {
+                "api": {
+                    "saved": "Task has been saved successfully.", 
+                    "updated": "Task has been updated successfully.",  
+                    "deleted": "Task has been deleted successfully."
+                }
+            } 
+        },
+        "roleTask": {
+            "label": {
+                "formCls": "role-task-frm",
+                "heading": "Manage Role Task",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Role Task"             
+                },
+                "roleId": {
+                    "label": "Role",
+                    "placeholder": "Select"                
+                },
+                "task": {
+                    "label": "Task",
+                    "placeholder": "Select"                
+                },
+                "access": {
+                    "read": "Read",
+                    "write": "Write", 
+                    "update": "Update",
+                    "delete": "Delete"               
+                },
+                "roleAccess": [
+                    {
+                        "key": "read",
+                        "value": "Read",
+                        "selected": false
+                    },
+                    {
+                        "key": "write",
+                        "value": "Write",
+                        "selected": false
+                    },
+                    {
+                        "key": "update",
+                        "value": "Update",
+                        "selected": false
+                    },
+                    {
+                        "key": "delete",
+                        "value": "Delete",
+                        "selected": false 
+                    }
+                ],
+                "roleAccessValue": [8, 12, 14, 15],
+                "list": {
+                    "heading": "Task List",
+                    "taskName": "Task Name",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "edit": "Click her to edit",
+                        "delete": "Click her to delete"
+                    }              
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset"
+            },
+            "error": {
+                "roleId": {
+                    "required": "This field is requiredd.",
+                    "exist": "Role Task name already exist.",
+                    "notFound": "Role Task name not found."
+                },
+                "api": {
+                    "authorization": "You are unauthorised to see this page"
+                }
+            },
+            "success": {
+                "api": {
+                    "saved": "Role Task has been saved successfully.", 
+                    "updated": "Role Task has been updated successfully",  
+                    "deleted": "Role Task has been delete successfully"
+                }
+            } 
+        },
+        "user": {
+            "label": {
+                "formCls": "user-frm",
+                "heading": "Manage User",
+                "addUser": "Add a new User",
+                "updateUser": "Update User",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "User"             
+                },
+                "firstName": {
+                    "label": "First Name",
+                    "placeholder": "Enter first name"               
+                },
+                "lastName": {
+                    "label": "Last Name",
+                    "placeholder": "Enter last name"               
+                },
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Enter email"               
+                },
+                "companyName": {
+                    "label": "Company Name",
+                    "placeholder": "Enter company name"               
+                }, 
+                "mobile": {
+                    "label": "Mobile",
+                    "placeholder": "Enter mobile no"              
+                },               
+                "roles": {
+                    "label": "Roles",
+                    "placeholder": "Select role"              
+                },
+                "defaultRole": {
+                    "label": "Default Role",
+                    "placeholder": "Select Default role"               
+                },
+                "isActiveOpt": [
+                    {
+                        "id": true,
+                        "name": "Active"
+                    },
+                    {
+                        "id": false,
+                        "name": "Inactive"
+                    }
+                ],
+                "list": {
+                    "heading": "User List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "companyName": "Company",
+                    "name": "Name",
+                    "email": "Email",
+                    "status": "Status",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "reset": "Click here to reset password",
+                        "edit": "Click here to edit",
+                        "delete": "Click her to delete",
+                        "activate": "click here to toggle active"
+                    },
+                    "panel": {
+                        "firstName": {
+                            "placeholder": "Search by first name"
+                        },
+                        "lastName": {
+                            "placeholder": "Search by last name"
+                        },
+                        "email": {
+                            "placeholder": "Search by email"
+                        },
+                        "companyName": {
+                            "placeholder": "Search by company name"
+                        },
+                        "roles": {
+                            "placeholder": "Search by roles"
+                        },
+                        "mobile": {
+                            "placeholder": "Search by mobile no"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching the filters provided"              
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search"
+            },
+            "error": {
+                "firstName": {
+                    "required": "This field is required."
+                },
+                "lastName": {
+                    "required": "This field is required."
+                },
+                "email": {
+                    "required": "This field is required.",
+                    "pattern": "Email must be a valid email address.",
+                    "exist": "Email already exist."
+                },
+                "companyName": {
+                    "required": "This field is required."
+                },
+                "mobile": {
+                    "required": "This field is required."
+                },
+                "roles": {
+                    "required": "This field is required."               
+                },
+                "defaultRole": {
+                    "required": "This field is required."               
+                },
+                "api": {
+                    "authorization": "You are unauthorised to see this page",
+                    "invalidResetLink": "Either you have recovered your password or not a valid link",
+                    "invalidActivationLink": "Either you have already activated your account or not a valid link",
+                    "foreignKeyReferenceExist": "Role you are trying to delete has a reference in question_answers table or question_set_assignments table."
+                }
+            },
+            "success": {
+                "api": {
+                    "saved": "User has been saved successfully.", 
+                    "updated": "User has been updated successfully",  
+                    "deleted": "User has been delete successfully",
+                    "activated": "User has been activated successfully",
+                    "reseted": "User has been reset successfully"
+                }
+            } 
+        }        
+    },
+    "master": {
+        "speciality": {
+            "label": {
+                "formCls": "speciality-frm",
+                "heading": "Manage Speciality",
+                "addRole": "Add a new Speciality",
+                "updateRole": "Update Speciality",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Speciality"             
+                },
+                "specialityName": {
+                    "label": "Speciality Name ",
+                    "placeholder": "Enter Speciality name"                
+                },
+                "list": {
+                    "heading": "Speciality List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "specialityName": "Speciality Name",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "edit": "Click her to edit",
+                        "delete": "Click her to delete"
+                    },
+                    "panel": {
+                        "specialityName": {
+                            "label": "Speciality Name",
+                            "placeholder": "Search by speciality name"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching the filters provided"             
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search"
+            },
+            "error": {
+                "specialityName": {
+                    "required": "This field is required.",
+                    "exist": "Speciality name already exist.",
+                    "notFound": "Speciality name not found."
+                },
+                "api": {
+                    "authorization": "You are unauthorised to see this page.",
+                    "foreignKeyReferenceExist": "Speciality you are trying to delete has a reference in categories table."
+                }
+            },
+            "success": {
+                "api": {
+                    "saved": "Speciality has been saved successfully.", 
+                    "updated": "Speciality has been updated successfully.",  
+                    "deleted": "Speciality has been deleted successfully."
+                }
+            } 
+        },
+        "category": {
+            "label": {
+                "formCls": "category-frm",
+                "addRole": "Add a new Category",
+                "updateRole": "Update Category",
+                "heading": "Manage Category",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Category"             
+                },
+                "specialityId": {
+                    "label": "Speciality",
+                    "placeholder": "Select"                
+                },
+                "categoryName": {
+                    "label": "Category Name ",
+                    "placeholder": "Enter category name"                
+                },
+                "list": {
+                    "heading": "Category List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "speciality": "Speciality",
+                    "categoryName": "Category Name",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "edit": "Click her to edit",
+                        "delete": "Click her to delete"
+                    },
+                    "panel": {
+                        "specialityId": {
+                            "label": "Speciality",
+                            "placeholder": "Search by speciality"
+                        },
+                        "categoryName": {
+                            "label": "Category Name",
+                            "placeholder": "Search by category name"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching the filters provided"              
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search"
+            },
+            "error": {
+                "specialityId": {
+                    "required": "This field is required."
+                },
+                "categoryName": {
+                    "required": "This field is required.",
+                    "exist": "Category name already exist.",
+                    "notFound": "Category name not found."
+                },
+                "api": {
+                    "authorization": "You are unauthorised to see this page.",
+                    "foreignKeyReferenceExist": "Category you are trying to delete has a reference in questions table."
+                }
+            },
+            "success": {
+                "api": {
+                    "saved": "Category has been saved successfully.", 
+                    "updated": "Category has been updated successfully.",  
+                    "deleted": "Category has been deleted successfully."
+                }
+            } 
+        },
+        "question": {
+            "label": {
+                "inputTypes": [
+                    {
+                        "key": 1,
+                        "value": "Text"
+                    },
+                    {
+                        "key": 2,
+                        "value": "Textarea"
+                    },
+                    {
+                        "key": 3,
+                        "value": "Dropdown"
+                    },
+                    {
+                        "key": 4,
+                        "value": "Radio"
+                    },
+                    {
+                        "key": 5,
+                        "value": "Checkbox"
+                    }
+                ],
+                "inputTypesKeyMap": {
+                    "1": "Text",
+                    "2": "Textarea",
+                    "3": "Dropdown",
+                    "4": "Radio",
+                    "5": "Checkbox"
+                },
+                "formCls": "question-frm",
+                "addRole": "Add a new Questions",
+                "updateRole": "Update Question",
+                "heading": "Manage Questions",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Questions"             
+                },
+                "specialityId": {
+                    "label": "Speciality",
+                    "placeholder": "Select" 
+                },                
+                "categoryId": {
+                    "label": "Category",
+                    "placeholder": "Enter category"                
+                },
+                "questionName": {
+                    "label": "Question Name",
+                    "placeholder": "Enter question name"                
+                },
+                "answer": {
+                    "label": "Answer",
+                    "placeholder": "Enter answer"                
+                },
+                "inputType": {
+                    "label": "Type",
+                    "placeholder": "Enter type"                
+                },
+                "options": {
+                    "label": "Options",
+                    "placeholder": "Enter options",
+                    "action": {
+                        "add": "Add",
+                        "delete": "Delete",
+                        "addToAnswer": "Add to answer"
+                    }               
+                },
+                "comments": {
+                    "label": "Comments",
+                    "placeholder": "Enter comments"                
+                },
+                "list": {
+                    "heading": "Question List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "speciality": "Speciality",
+                    "category": "Category",
+                    "questionName": "Question",
+                    "answer": "Answer",
+                    "type": "Type",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "edit": "Click her to edit",
+                        "delete": "Click her to delete"
+                    },
+                    "panel": {
+                        "specialityId": {
+                            "label": "Speciality",
+                            "placeholder": "Select" 
+                        },
+                        "categoryId": {
+                            "label": "Category",
+                            "placeholder": "Select"                
+                        },
+                        "questionName": {
+                            "label": "Question Name",
+                            "placeholder": "Search by question name"                
+                        },
+                        "answer": {
+                            "label": "Answer",
+                            "placeholder": "Search by answer"                
+                        },
+                        "inputType": {
+                            "label": "Input Type",
+                            "placeholder": "Select"                
+                        },
+                        "options": {
+                            "label": "Options",
+                            "placeholder": "Search by options"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching the filters provided"              
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search",
+                "atleastOneOption": "Select atleast one option.",
+                "multipleAnswerOnlyValid": "Multiple answer only allowed for checkbox input type.",
+                "selectType": "Select Type.",
+                "enterOptVal": "Enter options value.",
+                "deleteConfirm": "Ary you sureto delete?",
+                "inputOptionPopup": "text and textarea can contain only 1 option"
+            },
+            "error": {
+                "specialityId": {
+                    "required": "This field is required."
+                },
+                "categoryId": {
+                    "required": "This field is required."
+                },
+                "questionName": {
+                    "required": "This field is required.",
+                    "exist": "Question name already exist.",
+                    "notFound": "Question name not found."
+                },                
+                "answer": {
+                    "required": "This field is required."
+                },
+                "inputType": {
+                    "required": "This field is required."
+                },
+                "options": {
+                    "required": "This field is required."
+                },
+                "comments": {
+                    "required": "This field is required."
+                },
+                "api": {
+                    "authorization": "You are unauthorised to see this page.",
+                    "foreignKeyReferenceExist": "Question you are trying to delete has a reference in question_answers table or question_sets table."
+                }
+            },
+            "success": {
+                "api": {
+                    "saved": "Question has been saved successfully.", 
+                    "updated": "Question has been updated successfully.",  
+                    "deleted": "Question has been deleted successfully."
+                }
+            } 
+        },
+        "questionSet": {
+            "label": {
+                "formCls": "question-set-frm",
+                "addRole": "Add a new Question Set",
+                "updateRole": "Update Question Set",
+                "heading": "Manage Question Sets",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Questions"             
+                },
+                "specialityId": {
+                    "label": "Speciality",
+                    "placeholder": "Select" 
+                },                
+                "categoryId": {
+                    "label": "Category",
+                    "placeholder": "Select"                
+                },
+                "questionId": {
+                    "label": "Question",
+                    "placeholder": "Select"                
+                },
+                "questions": {
+                    "label": "Question Set",
+                    "placeholder": "Select" 
+                },
+                "setName": {
+                    "label": "Set Name",
+                    "placeholder": "Enter set name"                
+                },
+                "options": {
+                    "action": {
+                        "add": "Add",
+                        "delete": "Delete"
+                    }               
+                },
+                "list": {
+                    "heading": "Question Set List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "setName": "Set Name",
+                    "questions": "Questions",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "edit": "Click her to edit",
+                        "delete": "Click her to delete"
+                    },
+                    "panel": {
+                        "setName": {
+                            "label": "Set Name",
+                            "placeholder": "Search by set name"
+                        },
+                        "questionName": {
+                            "label": "Question",
+                            "placeholder": "Search by question"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching the filters provided"              
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search",
+                "oneQuestiontoSet": "Please select atleast one question to add in set.",
+                "oneQuestionDeleteConfirm": "Please select atleast one question from set to delete.",
+                "deleteConfirm": "Are you sure to delete?"
+            },
+            "error": {
+                "specialityId": {
+                    "required": "This field is required."
+                },
+                "categoryId": {
+                    "required": "This field is required."
+                },
+                "questionId": {
+                    "required": "This field is required."
+                },                
+                "setName": {
+                    "required": "This field is required.",
+                    "exist": "Set name already exist.",
+                    "notFound": "Set name not found."
+                },
+                "questions": {
+                    "required": "This field is required."
+                },
+                "api": {
+                    "authorization": "You are unauthorised to see this page.",
+                    "foreignKeyReferenceExist": "Question Set you are trying to delete has a reference in question_answers table or question_set_assignments table."
+                }
+            },
+            "success": {
+                "api": {
+                    "saved": "Question Set has been saved successfully.", 
+                    "updated": "Question Set  has been updated successfully.",  
+                    "deleted": "Question Set  has been deleted successfully."
+                }
+            } 
+        },
+        "questionAssignment": {
+            "label": {
+                "formCls": "question-set-assignment-frm",
+                "addRole": "Add a new Exam Question Assignment",
+                "updateRole": "Update Exam Question Assignment",
+                "heading": "Manage Exam Question Assignment",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Questions"             
+                },
+                "questionSetId": {
+                    "label": "Question Sets",
+                    "placeholder": "Select" 
+                },                
+                "userId": {
+                    "label": "Professional",
+                    "placeholder": "Select"                
+                },
+                "questions": {
+                    "label": "Questions",
+                    "placeholder": "Select"                
+                },
+                "options": {
+                    "action": {
+                        "add": "Add",
+                        "delete": "Delete"
+                    }               
+                },
+                "list": {
+                    "heading": "Exam Question Assignment List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "questionSets": "Question Sets",
+                    "user": "Professional",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "edit": "Click her to edit",
+                        "delete": "Click her to delete"
+                    },
+                    "panel": {
+                        "questionSetId": {
+                            "label": "Set Name",
+                            "placeholder": "Search by set name"
+                        },
+                        "userId": {
+                            "label": "User",
+                            "placeholder": "Search by user name"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching the filters provided"              
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search",
+                "deleteConfirm": "Please select atleast one question to delete.",
+                "deleteCommon": "Are you sure to delete?"
+            },
+            "error": {
+                "questionSetId": {
+                    "required": "This field is required.",
+                    "exist": "Question Set already exist.",
+                    "notFound": "Question Set not found."
+                },
+                "userId": {
+                    "required": "This field is required."
+                },
+                "api": {
+                    "authorization": "You are unauthorised to see this page.",
+                    "foreignKeyReferenceExist": "Question Set Assignment you are trying to delete has a reference in question_answers table."
+                }
+            },
+            "success": {
+                "api": {
+                    "saved": "Exam Question Assignment has been saved successfully.", 
+                    "updated": "Question Assignment  has been updated successfully.",  
+                    "deleted": "Question Assignment  has been deleted successfully."
+                }
+            } 
+        },
+        "takeExam": {
+            "label": {
+                "formCls": "take-exam-frm",
+                "addRole": "Add a new Take Quiz",
+                "updateRole": "Update Take Quiz",
+                "heading": "Manage Take Quiz",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Take Quiz"             
+                },
+                "list": {
+                    "heading": "Asigned Quiz List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "setName": "Set Name",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "start": "Click here to start exam",
+                        "view": "Click here to view exam details"
+                    },
+                    "panel": {
+                        "setName": {
+                            "label": "Set Name",
+                            "placeholder": "Search by set name"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching the filters provided"             
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search"
+            },
+            "error": {
+                "api": {
+                    "authorization": "You are unauthorised to see this page."
+                }
+            },
+            "success": {
+                "api": {}
+            } 
+        },
+        "commenceExam": {
+            "label": {
+                "formCls": "commence-exam-frm",
+                "addRole": "Add a new Role",
+                "updateRole": "Update Role",
+                "heading": "Manage Take Quiz",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Take Quiz"             
+                },
+                "list": {
+                    "heading": "Asigned Quiz List",
+                    "setName": "Set Name",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "start": "Click here to start exam",
+                        "view": "Click here to view exam details"
+                    }              
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "unAnsweredConfirm": "You have unanswered questions!, are you sure to submit?",
+                "select": "Select",
+                "next": "Next",
+                "prev": "Previous",
+                "showUnAnswered": "Show unanswered"
+            },
+            "error": {
+                "api": {
+                    "authorization": "You are unauthorised to see this page.",
+                    "exist": "You have already submitted this question set.",
+                    "max3Times": "You have already submitted 3 times this question set."
+                }
+            },
+            "success": {
+                "api": {
+                    "saved": "Question answer has been saved successfully.", 
+                    "updated": "Question answer has been updated successfully.",  
+                    "deleted": "Question answer has been deleted successfully."
+                }
+            }
+        },
+        "examResult": {
+            "label": {
+                "formCls": "exam-result-frm",
+                "heading": "Quiz Result",
+                "result": "Results",
+                "yourScore":"Your Score",
+                "retake": "You did n't receive an 85% Score, you <b>must</b> click the <span class='text-green'>Retake Quiz </span> <br/>button to retake the quiz. Better luck Next Time.",
+                "exit": "Congratulations!! You Passed the test.                You can Retake Quiz button to retake the quiz.",
+                "exitCourse":"Click the <span class='text-red'>EXIT COURSE</span> button.",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Take Quiz"             
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "select": "Select",
+                "retakeBtn": "Retake Quiz",
+                "reviewBtn": "Review",
+                "exitBtn": "exit",
+                "attempted": "Attempted",
+                "unattempted": "Not Attempted",
+                "answered": "Answered",
+                "unAnswered": "unanswered",
+                "correct": "Correct",
+                "inCorrect": "Wrong"
+            },
+            "error": {
+                "api": {
+                    "authorization": "You are unauthorised to see this page."
+                }
+            },
+            "success": {
+                "api": {}
+            }
+        },
+        "examDetails": {
+            "label": {
+                "formCls": "take-exam-frm",
+                "addRole": "Add a new Take Quiz",
+                "updateRole": "Update Take Quiz",
+                "heading": "Quiz Details",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Take Quiz"             
+                },
+                "list": {
+                    "heading": "Asigned Quiz List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "setName": "Set Name",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "start": "Click here to start exam",
+                        "view": "Click here to view exam details"
+                    },
+                    "panel": {
+                        "setName": {
+                            "label": "Set Name",
+                            "placeholder": "Search by set name"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching quiz details"             
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search"
+            },
+            "error": {
+                "api": {
+                    "authorization": "You are unauthorised to see this page."
+                }
+            },
+            "success": {
+                "api": {}
+            } 
+        },
+        "examReview": {
+            "label": {
+                "formCls": "take-exam-frm",
+                "addRole": "Add a new Take Quiz",
+                "updateRole": "Update Take Quiz",
+                "heading": "Quiz Details",
+                "breadCumb": {
+                    "second": "Dashboard",
+                    "third": "Take Quiz"             
+                },
+                "list": {
+                    "heading": "Asigned Quiz List",
+                    "filter": "Filter",
+                    "appliedFilter": "Applied Filters",
+                    "clearFilters": "Clear Filters",
+                    "setName": "Set Name",
+                    "date": "Date",
+                    "action": "Action",
+                    "title": {
+                        "start": "Click here to start exam",
+                        "view": "Click here to view exam details"
+                    },
+                    "panel": {
+                        "setName": {
+                            "label": "Set Name",
+                            "placeholder": "Search by set name"
+                        }
+                    },
+                    "noRecordFound": "No content match your filtering criteria",
+                    "noRecordFoundSorry": "Sorry we didn't find any record matching quiz details"             
+                },
+                "btnPrimary": "Submit",
+                "btnSec": "Reset",
+                "btnSearch": "Search"
+            },
+            "error": {
+                "api": {
+                    "authorization": "You are unauthorised to see this page."
+                }
+            },
+            "success": {
+                "api": {}
+            } 
+        }
+    },
+    "footer": {
+        "copyRight": "ClinDCast Online Exam",
+        "poweredBy": "Powered By ClinDCast"
+    } 
+}

@@ -1,0 +1,137 @@
+<div class="container-fluid content">
+    <div class="content-top">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="top-header pd-t3">
+                    {{ locale.label.heading }}
+                </div>
+                <div class="top-body ds-9">
+                    <ol class="content-nav">
+                        <li class="content-nav-item">
+                            <a [routerLink]="['/']">
+                                {{ breadCumb.first }}
+                            </a>
+                        </li>    
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a [routerLink]="['/admin/dashboard']">
+                                {{ locale.label.breadCumb.second }}
+                            </a>    
+                        </li> 
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a>
+                                {{ locale.label.breadCumb.third }}
+                            </a>    
+                        </li>
+                    </ol>
+                </div> 
+            </div>
+            <div class="col-sm-6 text-right">
+               
+            </div>
+        </div>       
+    </div>
+
+    <div class="content-middle">
+        <div class="middle-header">
+            <div class="alert-message">
+                <div class="alert alert-success" role="alert">            
+                </div>
+            </div>
+            <div class="alert-message">
+                <div class="alert alert-danger" role="alert">            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-bottom">
+        <div class="bottom-body commence-exam-frm" *ngIf="questionSets">
+            <div class="rowss">
+                <div class="body-heading">
+                    <span class="title">
+                        {{ questionSets?.questionSetId?.setName }}
+                    </span>
+                    <span class="count">
+                        <a (click)="showUnansweredQuestion()" *ngIf="!isAnsweredAllQuestion" style="color: #FFFFFF;">
+                            {{ locale.label.showUnAnswered }}
+                        </a>
+                        
+                        ({{ slide?.index +1 }} of {{ slide?.length }})
+                    </span>
+                    <div class="clr-both"></div>
+                </div>
+                <div class="commence-exam-question">
+                    <div id="image-slider" class="splide">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide" *ngFor="let question of questionSets?.questionSetId?.questions;let idx = index;" [attr.data-questionid]="question._id">
+                                    <div>
+                                        <div class="mg-b20 mg-t10 fs-24" style="font-weight: bold;">
+                                            Question {{ idx+1 }} 
+                                        </div>
+                                        <div class="fs-20 mg-b20">
+                                            {{ question.questionName }}
+                                        </div>
+                                        <ng-container *ngIf="question.inputType === 1">
+                                            <input type="text" name="q{{ idx }}" class="inpt" id="{{ question._id}}"(blur)="updateQuestionAnswer()">
+                                        </ng-container>
+                                        <ng-container *ngIf="question.inputType === 2">
+                                            <textarea type="text" name="q{{ idx }}" class="inpt" id="{{ question._id}}" (blur)="updateQuestionAnswer()"></textarea>
+                                        </ng-container>
+                                        <ng-container *ngIf="question.inputType === 3">
+                                            <select  name="q{{ idx }}" class="inpt" id="{{ question._id}}" (change)="updateQuestionAnswer()">
+                                                <option value="">{{ locale.label.select }}</option>
+                                                <option *ngFor="let option of question.options" value="option" value="{{ option }}">
+                                                    {{ option }}
+                                                </option>
+                                            </select>
+                                        </ng-container>
+                                        <ng-container *ngIf="question.inputType === 4">
+                                            <div class="chbxs" *ngFor="let option of question.options;let innerIdx = index;" >
+                                                <input type="radio" name="rad{{ idx }}" id="checkbox{{ idx }}{{ innerIdx }}" class="regular-radio chkrad" value="{{ option }}"  (click)="updateQuestionAnswer()">
+                                        
+                                                <label class="box-chkbx-label" for="checkbox{{ idx }}{{ innerIdx }}"></label> {{ option }}
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="question.inputType === 5">
+                                            <div class="chbxs" *ngFor="let option of question.options;let innerIdx = index;" >
+                                                <input type="checkbox"  id="checkbox{{ idx }}{{ innerIdx }}" class="regular-checkbox chkchbx" value="{{ option }}" (click)="updateQuestionAnswer()">
+                                        
+                                                <label class="box-chkbx-label" for="checkbox{{ idx }}{{ innerIdx }}"></label> {{ option }}
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-footer">
+                    <button class="btn secondary prev mg-b10" (click)="prev()">{{ locale.label.prev }}</button>
+
+                    <button class="btn secondary next mg-b10" (click)="next()" *ngIf="!checkIsLastQuestion()">{{ locale.label.next }}</button>
+
+                    
+
+                    <button class="btn secondary next mg-b10" (click)="submitAnswer()" *ngIf="checkIsLastQuestion()">{{ locale.label.btnPrimary }}</button>
+
+                    <div class="clr-both"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="row">
+            <div class="col-lg-7">
+                © 2021  {{ footer.copyRight }} 
+            </div>
+            <div class="col-lg-5">
+                 {{ footer.poweredBy }} 
+            </div>
+        </div>
+    </div>
+</div>

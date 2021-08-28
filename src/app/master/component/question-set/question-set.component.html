@@ -1,0 +1,390 @@
+<div class="container-fluid content" (scroll)="loadMore()">
+    <div class="content-top">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="top-header pd-t3">
+                    {{ locale.label.heading }}
+                </div>
+                <div class="top-body ds-9">
+                    <ol class="content-nav">
+                        <li class="content-nav-item">
+                            <a [routerLink]="['/']">
+                                {{ breadCumb.first }}
+                            </a>
+                        </li>    
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a [routerLink]="['/admin/dashboard']">
+                                {{ locale.label.breadCumb.second }}
+                            </a>    
+                        </li> 
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a>
+                                {{ locale.label.breadCumb.third }}
+                            </a>    
+                        </li>
+                    </ol>
+                </div> 
+            </div>
+            <div class="col-sm-6 text-right">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn primary" data-toggle="modal" data-target="#app-modal" id="modalBtn">
+                    {{ locale.label.addRole }}
+                </button>
+            </div>
+        </div>       
+    </div>
+
+    <div class="content-middle">
+        <div class="middle-header">
+            <div class="alert-message">
+                <div class="alert alert-success" role="alert">            
+                </div>
+            </div>
+            <div class="alert-message">
+                <div class="alert alert-danger" role="alert">            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-bottom">
+        <div class="bottom-header ds-9">
+            <div class="row">
+                <div class="col-sm-8 mg-b10 pd-t8 list-heading">
+                    {{ locale.label.list.heading }}
+                </div>
+                <div class="col-sm-4 mg-b10 text-right">
+                    <button class="btn btn-filter btn-filter-bg" (click)="toggleSearchPanel()">
+                        <i class="fa fa-sliders" aria-hidden="true"></i>
+                        {{ locale.label.list.filter }}   
+                    </button>                            
+                </div>
+            </div>
+        </div> 
+        <div class="row body-header">
+            <div class="col-sm-8 mg-b10 mg-t10 pd-t8">
+                <ng-container *ngIf="totalCount > 0">
+                    Showing {{ start }} to {{ end }} of {{ totalCount }} entries
+                </ng-container> 
+            </div>
+            <div class="col-sm-4 mg-b10 mg-t10 text-right">
+                <button class="btn btn-filter btn-filter-bg" (click)="toggleSearchPanel()">
+                    <i class="fa fa-sliders" aria-hidden="true"  (click)="toggleSearchPanel()"></i>
+                    {{ locale.label.list.filter }}   
+                </button> 
+                <select class="inpt width-auto limit" (change)="setPageLimit(limit.value, true)" #limit>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+        </div>
+        <div class="bottom-search">
+            <div class="search-panel" [formGroup]="questionSearchFrm">
+                <div class="row">
+                    <div class="col-md-4 mg-b10">
+                        <input type="text" class="inpt" placeholder="{{ locale.label.list.panel.setName.placeholder }}" formControlName="setName">
+                    </div>
+                    <div class="col-md-4 mg-b10">
+                        <input type="text" class="inpt" placeholder="{{ locale.label.list.panel.questionName.placeholder }}" formControlName="questionName">
+                    </div>
+                    <div class="col-md-4 mg-b10 text-right">
+                        <button class="btn primary" (click)="getQuestionSets(true)">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            {{ locale.label.btnSearch }}
+                        </button>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <div class="bottom-filter">
+            <div class="filter-panel mg-t10 mg-b10 applied-filters" *ngIf="isFilterApplied">
+                <div class="row">
+                    <div class="col-sm-6">
+                        {{ locale.label.list.appliedFilter }}:
+                    </div>
+                    
+                    <div class="col-sm-6 text-right">
+                        <a (click)=resetFilters()>
+                            {{ locale.label.list.clearFilters }}
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mg-t10 mg-b10 applied-filters">
+                        <span class="badge rounded-pill bg-secondary pd-5 mg-r5" *ngIf="questionSearchFrm.value.setName">
+                            {{ locale.label.list.panel.setName.label }} : {{ questionSearchFrm.value.setName }}
+                        </span>
+                        <span class="badge rounded-pill bg-secondary pd-5 mg-r5" *ngIf="questionSearchFrm.value.questionName">
+                            {{ locale.label.list.panel.questionName.label }} : {{ questionSearchFrm.value.questionName }}
+                        </span>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <div class="bottom-body" *ngIf="noRecordFound">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table list" *ngIf="questionSets">
+                            <thead>
+                                <tr [attr.data-id]="idx">
+                                    <th>
+                                        {{ locale.label.list.setName }}
+                                        <i class="fa fa-sort" aria-hidden="true" (click)="setSort('questionName')"></i>
+                                    </th>
+                                    <th>
+                                        {{ locale.label.list.questions }}
+                                        <i class="fa fa-sort" aria-hidden="true" (click)="setSort('answer')"></i>
+                                    </th>
+                                    <th>
+                                        {{ locale.label.list.date }}
+                                        <i class="fa fa-sort" aria-hidden="true" (click)="setSort('createdDate')"></i>
+                                    </th>
+                                    <th>
+                                        {{ locale.label.list.action }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let questionSet of questionSets;let idx = index;">
+                                    <td>
+                                        {{ questionSet.setName }}
+                                    </td>
+                                    <td style="padding: 0;">
+                                        <div class="question-list">
+                                            <div class="question-list-row" *ngFor="let questionObj of questionSet.question">
+                                                {{ questionObj.questionName }}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{ questionSet.createdDate | date: 'dd-MM-yyyy' }}
+                                    </td>
+                                    <td>
+                                        <i class="fa fa-pencil-square-o edit pd-r5" title="{{ locale.label.list.title.edit }}"  (click)="editQuestionSets(idx)"></i>
+    
+                                        <i class="fa fa-trash-o delete" title="{{ locale.label.list.title.delete }}"  (click)="deleteQuestionSets(questionSet._id)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <div class="footer-panel">
+                <div class="row" *ngIf="!noRecordFound">
+                    <div class="col-lg-12 no-record-found">
+                        <p class="mg-b10">
+                            <i aria-hidden="true" class="fa fa-sliders fs-32"></i>
+                        </p>
+                        <p class="mg-b10">
+                            {{ locale.label.list.noRecordFound }}
+                        </p>
+                        <p class="mg-b10">
+                            {{ locale.label.list.noRecordFoundSorry }}
+                        </p>                    
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="row">
+            <div class="col-lg-7">
+                © 2021  {{ footer.copyRight }} 
+            </div>
+            <div class="col-lg-5">
+                 {{ footer.poweredBy }} 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="app-modal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-lg  modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    {{ locale.label.addRole }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="resetFrm()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert-message-frm"></div>
+                <form [formGroup]="questionFrm" class="question-set-frm">
+                    <input type="hidden" name="_id" id="_id" class="_id" formControlName="_id">
+                    <div class="form-row">                
+                        <div class="col-lg-12">
+                            <div class="form-row">                
+                                <div class="form-group col-12">
+                                    <label class="lbl">
+                                        {{ locale.label.setName.label }}
+                                        <span class="error">*</span>
+                                    </label>
+                                    
+                                    <input type="text" id="setName" class="inpt setName" placeholder="{{ locale.label.setName.placeholder }}" formControlName="setName" [ngClass]="{ 'is-invalid': submitted && f.setName.errors }">
+                                    
+                                    <div *ngIf="submitted && f.setName.errors" class="error">
+                                        <div *ngIf="f.setName.errors.required">
+                                            {{ locale.error.setName.required }}
+                                        </div>
+                                    </div>
+                
+                                    <div class="server-error error"></div>
+                                </div>                        
+                            </div>
+                            <div class="form-row">                
+                                <div class="form-group col-12">
+                                    <label class="lbl">
+                                        {{ locale.label.specialityId.label }}
+                                        <span class="error">*</span>
+                                    </label>
+                                    
+                                    <select class="inpt specialityId"  formControlName="specialityId" [ngClass]="{ 'is-invalid': submitted && f.specialityId.errors }" (change)="getCategoriesBySpeciality(specialityId.value)" #specialityId>
+                                        <option value="null">Select</option>
+                                        <option value="{{ speciality._id }}" *ngFor="let speciality of specialities">
+                                            {{ speciality.specialityName }}
+                                        </option>
+                                    </select>
+                                    
+                                    <div *ngIf="submitted && f.specialityId.errors" class="error">
+                                        <div *ngIf="f.specialityId.errors.required">
+                                            {{ locale.error.specialityId.required }}
+                                        </div>
+                                    </div>
+                
+                                    <div class="server-error error"></div>
+                                </div>                        
+                            </div>
+                            <div class="form-row">                
+                                <div class="form-group col-12">
+                                    <label class="lbl">
+                                        {{ locale.label.categoryId.label }}
+                                        <span class="error">*</span>
+                                    </label>
+                                    
+                                    <select class="inpt categoryId"  formControlName="categoryId" [ngClass]="{ 'is-invalid': submitted && f.categoryId.errors }" (change)="getQuestionsByCategory(categoryId.value)" #categoryId>
+                                        <option value="null">Select</option>
+                                        <option value="{{ category._id }}" *ngFor="let category of categories">
+                                            {{ category.categoryName }}
+                                        </option>
+                                    </select>
+                                    
+                                    <div *ngIf="submitted && f.categoryId.errors" class="error">
+                                        <div *ngIf="f.categoryId.errors.required">
+                                            {{ locale.error.categoryId.required }}
+                                        </div>
+                                    </div>
+                
+                                    <div class="server-error error"></div>
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-row">                
+                                <div class="form-group col-lg-6">
+                                    
+                                    
+                                    <input type="hidden" formControlName="questionId">
+
+                                    <div class="question-sets">                
+                                        <div class="question-sets-header" >
+                                            <label class="lbl questions">
+                                                {{ locale.label.questionId.label }}
+                                                <span class="error">*</span>
+                                            </label>
+                                            <div class="add-more" (click)="addQuestionToSet($event)">
+                                                <i class="fa fa-plus"></i>
+                                                <a class="delete-btn"> 
+                                                    {{ locale.label.options.action.add }}
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="question-set" [ngClass]="{ 'is-invalid': submitted && f.questionId.errors && !isQuestionSelected }">
+                                            <div class="question-set-row" *ngFor="let question of questions;let idx = index;">
+                                                <div class="chbx">
+                                                    <input type="checkbox"  [attr.data-id]="question._id" id="question{{ question._id }}" class="regular-checkbox question-chbx" value="{{ question.questionName }}">
+                                            
+                                                    <label class="box-chkbx-label" for="question{{ question._id }}"></label>
+                                                </div>
+                                                <div class="questionIds">
+                                                    {{ question.questionName }}
+                                                </div>
+                                            </div>                               
+                                        </div>         
+                                        
+                                        <div *ngIf="submitted && f.questionId.errors && !isQuestionSelected" class="error">
+                                            <div *ngIf="f.questionId.errors.required">
+                                                {{ locale.error.questionId.required }}
+                                            </div>
+                                        </div>
+                    
+                                        <div class="server-error error"></div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <div class="question-sets">                
+                                        <div class="question-sets-header" >
+                                            <label class="lbl questions">
+                                                {{ locale.label.questions.label }}
+                                                <span class="error">*</span>
+                                            </label>
+                                            <div class="add-more" (click)="removeQuestionFromSet($event)">
+                                                <i class="fa fa-trash"></i>
+                                                <a class="delete-btn"> 
+                                                    {{ locale.label.options.action.delete }}
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="question-set" [ngClass]="{ 'is-invalid': submitted && questionIdInSetCnt }">
+                                            <div class="question-set-row" *ngFor="let questionObj of questionIdInSet | keyvalue;let idx = index;">
+                                                <div class="chbx">
+                                                    <input type="checkbox" [attr.data-id]="questionObj.key"   id="set{{ questionObj.key }}" class="regular-checkbox set-chbx" value="{{ questionObj.value.name }}">
+                                            
+                                                    <label class="box-chkbx-label" for="set{{ questionObj.key }}"></label>
+                                                </div>
+                                                <div class="questionIds">
+                                                    {{ questionObj.value.name }}
+                                                </div>
+                                            </div>                               
+                                        </div> 
+
+                                        <div class="form-group col-12" *ngIf="submitted && questionIdInSetCnt" class="error">
+                                            {{ locale.error.questions.required }}
+                                        </div>
+                    
+                                        <div class="form-group col-12 server-error error"></div>                       
+                                    </div>
+                                </div>                        
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" (click)="resetFrm()">
+                    <i class="fa fa-undo" aria-hidden="true"></i>
+                    {{ locale.label.btnSec }}
+                </button>
+
+                <button class="btn primary mg-r10" (click)="saveQuestionSets()">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    {{ locale.label.btnPrimary }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

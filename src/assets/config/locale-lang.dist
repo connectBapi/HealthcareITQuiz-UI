@@ -1,0 +1,118 @@
+{
+    "home": {
+        "label": {
+            "signin": {
+                "title": "Login",
+                "email": "Email",
+                "password": "Password",
+                "forgot_password": "Forgot Password",
+                "signin_btn": "Login",
+                "dont_have_account": "Don't have an account?"        
+            },
+            "forgotpassword": {
+                "title": "Forgot Password",
+                "email": "Email",
+                "forgot_password_btn": "Get Link",
+                "already_registered": "Aleady registered?",
+                "login": "login",
+                "getlink": "Get Link",
+                "success": "Check your mail for password reset link."       
+            },
+            "signup": {
+                "title": "Signup",
+                "first_name": "Name",
+                "email": "Email",
+                "password": "Password",
+                "forgot_password": "Forgot Password",
+                "signup_btn": "Signup",
+                "already_registered": "Aleady registered?",
+                "login": "login",
+                "user_registered": "Check your mail for activation link."        
+            }
+        },
+        "error": {
+            "ui": {
+                "email": {
+                    "required": "This field is required",
+                    "invalid_email": "Enter a valid Email"
+                },
+                "password": {
+                    "required": "This field is required",
+                    "min_six_chracter": "Minimum six chracter required"
+                },
+                "firstName": {
+                    "required": "This field is required"
+                }
+            },
+            "api": {
+                "userGroupNotFound": "userGroupNotFound",
+                "roleNotFound": "roleNotFound",
+                "userRoleNotFound": "userRoleNotFound", 
+                "invalidEmailOrPassword": "Incorrect username or password.", 
+                "accountLocked": "accountLocked",        
+                "userDetailNotFound": "userDetailNotFound",
+                "maxAttempt": "maxAttempt",
+                "passwordMatched": "passwordMatched",
+                "userRegistered": "userRegistered",      
+                "userUpdated": "userUpdated", 
+                "firstName": {
+                    "required": "required"
+                },            
+                "lastName": {
+                    "required": "required"
+                },
+                "email": {
+                    "required": "required",
+                    "inValidEmail": "inValidEmail",
+                    "notFound": "notFound",
+                    "exist": "exist"
+                },
+                "gender": {
+                    "required": "required"
+                },
+                "userName": {
+                    "required": "required"
+                },
+                "password": {
+                    "required": "required",
+                    "wrongPassword": "wrongPassword",
+                    "min6Chracter": "min6Chracter",
+                    "max16Chracter": "max16Chracter",
+                    "mustContain": "mustContain"
+                },
+                "newPassword": {
+                    "required": "required",
+                    "newRetypeMisMatch": "newRetypeMisMatch"
+                },
+                "retypeNewPassword": {
+                    "required": "required"
+                }
+            }
+        }        
+    },
+    "admin": {
+        "category": {
+            "heading": "Manage Category",
+            "category_name": "Category Name",
+            "category_name_help": "We'll never share your email with anyone else.",
+            "category_name_place_holder": "Enter Category Name",
+            "btn_primary": "Submit",
+            "btn_secondary": "Reset",
+            "uiError": {
+                "categoryName": {
+                    "required": "This field is required",
+                    "invalid_category_name": "Only letter number , & allowed"
+                }
+            },
+            "serverError": {                
+                "category_name_required": "This field is required",
+                "invalid_category_name": "Only letter number , & allowed",
+                "category_already_exist": "Category Name already exist.",
+                "category_not_found": "Category Name already exist.",
+                "category_saved": "Category saved successfully.",
+                "category_updated": "Category updated successfully.",
+                "category_deleted": "Category deleted successfully."
+            }
+        }
+    }
+}

@@ -1,0 +1,256 @@
+<div class="container-fluid content" (scroll)="loadMore()">
+    <div class="content-top">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="top-header pd-t3">
+                    {{ locale.label.heading }}
+                </div>
+                <div class="top-body ds-9">
+                    <ol class="content-nav">
+                        <li class="content-nav-item">
+                            <a [routerLink]="['/']">
+                                {{ breadCumb.first }}
+                            </a>
+                        </li>    
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a [routerLink]="['/admin/dashboard']">
+                                {{ locale.label.breadCumb.second }}
+                            </a>    
+                        </li> 
+                        <li class="content-nav-item"> 
+                            <i class="fa fa-chevron-right mg-l5" aria-hidden="true"></i>   
+                            <a>
+                                {{ locale.label.breadCumb.third }}
+                            </a>    
+                        </li>
+                    </ol>
+                </div> 
+            </div>
+            <div class="col-sm-6 text-right">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn primary" data-toggle="modal" data-target="#app-modal" id="modalBtn">
+                    {{ locale.label.addRole }}
+                </button>
+            </div>
+        </div>       
+    </div>
+    
+    <div class="content-middle">
+        <div class="middle-header">
+            <div class="alert-message">
+                <div class="alert alert-success" role="alert">            
+                </div>
+            </div>
+            <div class="alert-message">
+                <div class="alert alert-danger" role="alert">            
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-bottom">
+        <div class="bottom-header ds-9">
+            <div class="row">
+                <div class="col-sm-8 mg-b10 pd-t8 list-heading">
+                    {{ locale.label.list.heading }}
+                </div>
+                <div class="col-sm-4 mg-b10 text-right">
+                    <button class="btn btn-filter btn-filter-bg" (click)="toggleSearchPanel()">
+                        <i class="fa fa-sliders" aria-hidden="true"></i>
+                        {{ locale.label.list.filter }}   
+                    </button>                            
+                </div>
+            </div>
+        </div>  
+        <div class="row body-header">
+            <div class="col-sm-8 mg-b10 mg-t10 pd-t8">
+                <ng-container *ngIf="totalCount > 0">
+                    Showing {{ start }} to {{ end }} of {{ totalCount }} entries
+                </ng-container>             
+            </div>
+            <div class="col-sm-4 mg-b10 mg-t10 text-right">
+                <button class="btn btn-filter btn-filter-bg" (click)="toggleSearchPanel()">
+                    <i class="fa fa-sliders" aria-hidden="true"  (click)="toggleSearchPanel()"></i>
+                    {{ locale.label.list.filter }}   
+                </button> 
+                <select class="inpt width-auto limit" (change)="setPageLimit(limit.value, true)" #limit>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+        </div>
+        <div class="bottom-search">
+            <div class="search-panel" [formGroup]="roleSearchFrm">
+                <div class="row">
+                    <div class="col-md-4 mg-b10">
+                        <input type="text" class="inpt" placeholder="{{ locale.label.list.panel.roleName.placeholder }}" formControlName="roleName">
+                    </div>
+                    <div class="col-md-4 mg-b10">
+                        <input type="text" class="inpt" placeholder="{{ locale.label.list.panel.code.placeholder }}" formControlName="code">
+                    </div>
+                    <div class="col-md-4 mg-b10 text-right">
+                        <button class="btn primary" (click)="getRoles(true)">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            {{ locale.label.btnSearch }}
+                        </button>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <div class="bottom-filter">
+            <div class="filter-panel mg-t10 mg-b10 applied-filters" *ngIf="isFilterApplied">
+                <div class="row">
+                    <div class="col-sm-6">
+                        {{ locale.label.list.appliedFilter }}:
+                    </div>
+                    
+                    <div class="col-sm-6 text-right">
+                        <a (click)=resetFilters()>
+                            {{ locale.label.list.clearFilters }}
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mg-t10 mg-b10 applied-filters">
+                        <span class="badge rounded-pill bg-secondary pd-5 mg-r5" *ngIf="roleSearchFrm.value.roleName">
+                            {{ locale.label.list.panel.roleName.label }} : {{ roleSearchFrm.value.roleName }}
+                        </span>
+                        <span class="badge rounded-pill bg-secondary pd-5 mg-r5" *ngIf="roleSearchFrm.value.code">
+                            {{ locale.label.list.panel.code.label }} : {{ roleSearchFrm.value.code }}
+                        </span>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <div class="bottom-body" *ngIf="noRecordFound">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table list">
+                            <thead>
+                                <tr [attr.data-id]="idx">
+                                    <th>
+                                        {{ locale.label.list.roleName }}
+                                        <i class="fa fa-sort" aria-hidden="true" (click)="setSort('roleName')"></i>
+                                    </th>
+                                    <th>
+                                        {{ locale.label.list.code }}
+                                        <i class="fa fa-sort" aria-hidden="true" (click)="setSort('code')"></i>
+                                    </th>
+                                    <th>
+                                        {{ locale.label.list.date }}
+                                        <i class="fa fa-sort" aria-hidden="true" (click)="setSort('createdDate')"></i>
+                                    </th>
+                                    <th>
+                                        {{ locale.label.list.action }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let role of roles;let idx = index;">
+                                    <td>
+                                        {{ role.roleName }}
+                                    </td>
+                                    <td>
+                                        {{ role.code }}
+                                    </td>
+                                    <td>
+                                        {{ role.createdDate | date: 'dd-MM-yyyy' }}
+                                    </td>
+                                    <td>
+                                        <i class="fa fa-pencil-square-o edit pd-r5" title="{{ locale.label.list.title.edit }}"  (click)="editRoles(idx)"></i>
+                                        
+                                        <i class="fa fa-trash-o delete" title="{{ locale.label.list.title.delete }}"  (click)="deleteRoles(role._id)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>         
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <div class="footer-panel">
+                <div class="row" *ngIf="!noRecordFound">
+                    <div class="col-lg-12 no-record-found">
+                        <p class="mg-b10">
+                            <i aria-hidden="true" class="fa fa-sliders fs-32"></i>
+                        </p>
+                        <p class="mg-b10">
+                            {{ locale.label.list.noRecordFound }}
+                        </p>
+                        <p class="mg-b10">
+                            {{ locale.label.list.noRecordFoundSorry }}
+                        </p>                    
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="row">
+            <div class="col-lg-7">
+                © 2021  {{ footer.copyRight }}
+            </div>
+            <div class="col-lg-5">
+                {{ footer.poweredBy }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="app-modal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    {{ locale.label.addRole }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="resetFrm()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert-message-frm"></div>
+                <form [formGroup]="roleFrm" class="role-frm">
+                    <input type="hidden" name="_id" id="_id" class="_id" formControlName="_id">
+                    <input type="hidden" name="code" id="code" class="code" formControlName="code">
+                    <div class="form-row">                
+                        <div class="form-group col-12">
+                            <label class="lbl">
+                                {{ locale.label.roleName.label }}
+                                <span class="error">*</span>
+                            </label>
+    
+                            <input type="text" class="inpt roleName fa-icon" placeholder="{{ locale.label.roleName.placeholder }}" formControlName="roleName" [ngClass]="{ 'is-invalid': submitted && f.roleName.errors }">
+    
+                            <div *ngIf="submitted && f.roleName.errors" class="error">
+                                <div *ngIf="f.roleName.errors.required">
+                                    {{ locale.error.roleName.required }}
+                                </div>
+                            </div>
+        
+                            <div class="server-error error"></div>
+                        </div>                        
+                    </div>    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" (click)="resetFrm()">
+                    <i class="fa fa-undo" aria-hidden="true"></i>
+                    {{ locale.label.btnSec }}
+                </button>
+
+                <button class="btn primary mg-r10" (click)="saveRole()">
+                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    {{ locale.label.btnPrimary }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

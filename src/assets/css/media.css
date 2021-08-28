@@ -1,0 +1,57 @@
+@media (max-width: 992px)  {
+    .app-left {
+        transform: translateX(-100%);
+        z-index: 110;
+        width: 25%;
+    }
+    .app-right {
+        width: 100%;
+        left: 0;
+    }
+    .header-left i {
+        display: block;
+    }
+    .footer .row div, .footer .row div:last-child {
+        text-align: center;
+    }
+    .toggle-arrow {
+        display: block;
+    }
+}
+@media (max-width: 320px)  {
+    .header i {
+        font-size: 1.3rem;
+    }
+    .profile span {
+        font-size: 1rem;
+    }
+    .header i.fa-caret-down {
+        font-size: 1rem;
+    }
+    .header-right .menu.profile {
+        margin-top: 0;
+    }
+    .header-left {
+        padding-right: 0;
+    }
+    .header-right {
+        padding-left: 0;
+    }
+}
+@media (max-width: 768px)  {
+    .content > div {
+        padding: 0 1.125rem;
+    }
+}
+
+/*=================================== Forms ================================
+=============================================================================*/
+@media (max-width: 576px)  {
+    .btn.primary {
+        margin-bottom: 0.625rem;
+    }
+    .btn {
+        width: 100%;
+        display: block;
+    }
+}
